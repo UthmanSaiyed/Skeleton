@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary
 {
-    public class clsAddress
+    public class clsOrders
     {
     }
 }
