@@ -1,7 +1,6 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Net;
 
 namespace Testing4
 {
