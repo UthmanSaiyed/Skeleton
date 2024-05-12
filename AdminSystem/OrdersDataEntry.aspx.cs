@@ -18,8 +18,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Create a new instance of clsOrders
         clsOrders AnOrder = new clsOrders();
 
-        // Capture the Ticket ID directly from the TextBox (no conversion needed)
-        AnOrder.TicketID = txtTicketID.Text;
+        // Capture the Ticket ID directly from the TextBox and convert it to an integer
+        AnOrder.TicketID = Convert.ToInt32(txtTicketID.Text);
 
         // Capture and directly convert the Customer ID to an integer
         AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
