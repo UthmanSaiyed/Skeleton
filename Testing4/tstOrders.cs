@@ -27,7 +27,7 @@ namespace Testing4
         public void TicketIDPropertyOK()
         {
             clsOrders AnOrder = new clsOrders();
-            string TestData = "101AB";
+            int TestData = 101;
             AnOrder.TicketID = TestData;
             Assert.AreEqual(AnOrder.TicketID, TestData);
         }

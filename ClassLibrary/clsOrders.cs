@@ -5,7 +5,7 @@ namespace ClassLibrary
     public class clsOrders
     {
         private int mOrderID;
-        private string mTicketID;
+        private int mTicketID;
         private int mCustomerID;
         private string mOrderStatus;
         private DateTime mOrderDate;
@@ -18,7 +18,7 @@ namespace ClassLibrary
             set { mOrderID = value; }
         }
 
-        public string TicketID
+        public int TicketID
         {
             get { return mTicketID; }
             set { mTicketID = value; }
@@ -58,7 +58,7 @@ namespace ClassLibrary
         {
             // Simulate fetching data
             mOrderID = OrderID;
-            mTicketID = "101AB";
+            mTicketID = 101;
             mCustomerID = 1001;
             mOrderStatus = "Completed";
             mOrderDate = Convert.ToDateTime("2023-05-10");
