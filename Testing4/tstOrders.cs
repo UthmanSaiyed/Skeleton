@@ -24,7 +24,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //create some test data to assign to the property
-            int TestData = 1;
+            int TestData = 11;
             //assign the data to the property
             AnOrder.OrderID = TestData;
             //test to see that the two values are the same
@@ -118,7 +118,7 @@ namespace Testing4
             //create a Boolean variable to store the result of the search
             bool Found = false;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //test to see if the result is true
@@ -136,11 +136,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order id property
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 11)
             {
                 OK = false;
             }
@@ -158,7 +158,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the ticket id property
@@ -180,7 +180,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the customer id property
@@ -202,7 +202,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order status property
@@ -224,7 +224,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order date property
@@ -246,7 +246,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the is paid property
@@ -268,7 +268,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int OrderID = 21;
+            int OrderID = 11;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the total amount property

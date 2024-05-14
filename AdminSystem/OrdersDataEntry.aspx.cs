@@ -42,4 +42,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Navigate to the view page
         Response.Redirect("OrdersViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the clsOrders class
+        clsOrders AnOrder = new clsOrders();
+        //create a variable to store the primary key
+        Int32 OrderID;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+
+        //try to convert the primary key entered by the user
+        try
+        {
+            OrderID = Convert.ToInt32(txtOrderID.Text);
+            //find the record
+            Found = AnOrder.Find(OrderID);
+            //if found
+            if (Found == true)
+            {
+                //display the values of the properties in the form
+                txtTicketID.Text = AnOrder.TicketID.ToString();
+                txtCustomerID.Text = AnOrder.CustomerID.ToString();
+                txtOrderStatus.Text = AnOrder.OrderStatus;
+                txtOrderDate.Text = AnOrder.OrderDate.ToString();
+                txtIsPaid.Text = AnOrder.IsPaid.ToString();
+                txtTotalAmount.Text = AnOrder.TotalAmount.ToString();
+            }
+            else
+            {
+                //display an error message
+                lblError.Text = "Record not found.";
+            }
+        }
+        catch (FormatException)
+        {
+            //display an error message
+            lblError.Text = "Please enter a valid numeric Order ID.";
+        }
+    }
 }
