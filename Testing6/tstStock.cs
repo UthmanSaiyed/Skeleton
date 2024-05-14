@@ -193,7 +193,7 @@ namespace Testing6
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
-            if (AStock.Price != 99.99M)
+            if (AStock.Price != 4999.99M)
             {
                 OK = false;
             }
@@ -215,7 +215,7 @@ namespace Testing6
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
-            if (AStock.Supplier != "Adidas")
+            if (AStock.Supplier.Equals("Adidas"))
             {
                 OK = false;
             }
@@ -237,7 +237,7 @@ namespace Testing6
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
-            if (AStock.InStock != "2026 World Cup Final")
+            if (AStock.InStock.Equals("2026 World Cup Final"))
             {
                 OK = false;
             }
