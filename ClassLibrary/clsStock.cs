@@ -127,16 +127,32 @@ namespace ClassLibrary
         /****** FIND METHOD ******/
         public bool Find(int TicketId)
         {
-            //set the private data members to the test data value
-            mTicketId = 21;
-            mEventId = 101;
-            mQuantity = 1001;
-            mPrice = 4999.99M;
-            mSupplier = "Canada";
-            mTicketName = "2026 World Cup Final";
-            mInStock = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the ticket id to search for
+            DB.AddParameter("@TicketId", TicketId);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblStock_FilterByTicketId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //set the private data members to the test data value
+                mTicketId = 21;
+                mEventId = 101;
+                mQuantity = 1001;
+                mPrice = 4999.99M;
+                mSupplier = "Canada";
+                mTicketName = "2026 World Cup Final";
+                mInStock = true;
+                //always return true
+                return true;
+            }
+           //if no record was found
+           else
+            {
+                // return false indicating there is a problem
+                return false;
+            }
         }
     }
 }
