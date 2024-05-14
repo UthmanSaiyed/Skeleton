@@ -99,5 +99,172 @@ namespace Testing6
             //test to see that the two values are the same
             Assert.AreEqual(AStock.InStock, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create some test data to use with the method
+            Int32 TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestTicketIdFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the order id property
+            if (AStock.TicketId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestEventIdFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.EventId != 101)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.Quantity != 1001)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.Price != 99.99M)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.Supplier != "Adidas")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTicketNameFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.InStock != "2026 World Cup Final")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestInStockFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            bool Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            bool OK = true;
+            //create some test data to use with the method
+            int TicketId = 21;
+            //invoke the method
+            Found = AStock.Find(TicketId);
+            //check the ticket id property
+            if (AStock.InStock != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
