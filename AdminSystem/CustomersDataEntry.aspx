@@ -31,7 +31,7 @@
         <asp:Label ID="lblBirthDate" runat="server" style="z-index: 1; left: 104px; top: 215px; position: absolute" Text="Birth Date" width="79px"></asp:Label>
         <asp:TextBox ID="txtBirthDate" runat="server" style="z-index: 1; left: 208px; top: 216px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPhoneNumber" runat="server" style="z-index: 1; left: 104px; top: 245px; position: absolute; width: 109px; right: 1297px;" Text="Phone Number"></asp:Label>
-        <asp:TextBox ID="txtPhoneNumber" runat="server" style="z-index: 1; left: 208px; top: 245px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtPhonenumber" runat="server" style="z-index: 1; left: 208px; top: 245px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblNewsletter" runat="server" style="z-index: 1; left: 104px; top: 275px; position: absolute" Text="Newsletter" width="79px"></asp:Label>
         <p>
             <asp:CheckBox ID="cbNewsletter" runat="server" style="z-index: 1; left: 216px; top: 276px; position: absolute" Text="Yes" />
