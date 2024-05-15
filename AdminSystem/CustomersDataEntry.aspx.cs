@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ACustomer.BirthDate = Convert.ToDateTime(txtBirthDate.Text);
 
         //capture phonenumber
-        ACustomer.PhoneNumber = txtPhoneNumber.Text;
+        ACustomer.Phonenumber = txtPhonenumber.Text;
 
         //capture newsletter
         ACustomer.Newsletter = cbActive.Checked;
