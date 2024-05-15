@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -73,21 +74,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 TicketId;
         //create a variable to store the result of the find operation
         Boolean Found = false;
-        //get the primary key enteed by the user
-        TicketId = Convert.ToInt32(txtTicketId.Text); 
-        //find the record
-        Found = AStock.Find(TicketId);
-        //if found
-        if (Found == true)
+
+        try
         {
-            //display the values of the properties in the form
-            txtTicketId.Text = AStock.TicketId;
-            txtEventId.Text = AStock.EventId;
-            txtQuantity.Text = AStock.Quantity;
-            txtPrice.Text = AStock.Price;
-            txtSupplier.Text = AStock.Supplier;
-            txtTicketName.Text = AStock.TicketName;
-            chkInStock.Checked = AStock.InStock;
+            //get the primary key enteed by the user
+            TicketId = Convert.ToInt32(txtTicketId.Text);
+            //find the record
+            Found = AStock.Find(TicketId);
+            //if found
+            if (Found == true)
+            {
+                //display the values of the properties in the form
+                txtTicketId.Text = AStock.TicketId.ToString();
+                txtEventId.Text = AStock.EventId.ToString();
+                txtQuantity.Text = AStock.Quantity.ToString();
+                txtPrice.Text = AStock.Price.ToString();
+                txtSupplier.Text = AStock.Supplier;
+                txtTicketName.Text = AStock.TicketName;
+            }
+            else
+            {
+                //display an error message
+                lblError.Text = "Record not found.";
+            }
+        }
+        catch (FormatException)
+        {
+            //display an error message
+            lblError.Text = "Please enter a valid numeric Ticket ID.";
         }
     }
 
