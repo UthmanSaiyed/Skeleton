@@ -137,7 +137,7 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
                 //set the private data members to the test data value
-                mTicketId = 21;
+                mTicketId = 5;
                 mEventId = 101;
                 mQuantity = 1001;
                 mPrice = 4999.99M;

@@ -107,7 +107,7 @@ namespace Testing6
             //create a Boolean variable to store the result of the search
             bool Found = false;
             //create some test data to use with the method
-            Int32 TicketId = 21;
+            Int32 TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //test to see if the result is true
@@ -123,11 +123,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the order id property
-            if (AStock.TicketId != 21)
+            if (AStock.TicketId != 5)
             {
                 OK = false;
             }
@@ -145,7 +145,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
@@ -167,7 +167,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
@@ -189,7 +189,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
@@ -211,7 +211,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
@@ -233,7 +233,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
@@ -255,7 +255,7 @@ namespace Testing6
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int TicketId = 21;
+            int TicketId = 5;
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
