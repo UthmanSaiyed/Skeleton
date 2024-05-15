@@ -12,9 +12,9 @@ namespace ClassLibrary
         {
             get
             { //this sends data out of the property
-              return mCustomerID;
+                return mCustomerID;
             }
-            set 
+            set
             {
                 //this allows data into the property
                 mCustomerID = value;
@@ -124,22 +124,38 @@ namespace ClassLibrary
             }
         }
 
-    
+
         public bool Find(int CustomerID)
         {
-            //set the private data memebers to the test data value
-            mCustomerID = 4;
-            mFirstname = "Javk";
-            mLastname = "Peter";
-            mEmail = "paulopsa@gmail.com";
-            mBirthDate = Convert.ToDateTime("21/07/1990");
-            mPhonenumber = "07796895049";
-            mNewsletter = true;
-            mActive = true;
-            //always return true
-            return true;    
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the OrderID to search for
+            DB.AddParameter("@CustomerID", CustomerID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mFirstname = Convert.ToString(DB.DataTable.Rows[0]["Firstname"]);
+                mLastname = Convert.ToString(DB.DataTable.Rows[0]["Lastname"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BirthDate"]);
+                mPhonenumber = Convert.ToString(DB.DataTable.Rows[0]["Phonenumber"]);
+                mNewsletter = Convert.ToBoolean(DB.DataTable.Rows[0]["Newsletter"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
-
-
     }
 }
+            
+    
