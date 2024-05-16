@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
@@ -29,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
             Response.Write("Order Date: " + AnOrder.OrderDate.ToString("dd/MM/yyyy") + "<br/>");
 
             // Display the Is Paid status
-            Response.Write("Is Paid: " + (AnOrder.IsPaid ? "Yes" : "No") + "<br/>");
+            Response.Write("Order Paid: " + (AnOrder.IsPaid ? "Yes" : "No") + "<br/>");
 
             // Display the Total Amount
             Response.Write("Total Amount: £" + AnOrder.TotalAmount.ToString("N2") + "<br/>");

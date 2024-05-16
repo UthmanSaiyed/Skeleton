@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
@@ -15,32 +11,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        // Create a new instance of clsOrders
-        clsOrders AnOrder = new clsOrders();
+        try
+        {
+            // Create a new instance of clsOrders
+            clsOrders AnOrder = new clsOrders();
 
-        // Capture the Ticket ID directly from the TextBox and convert it to an integer
-        AnOrder.TicketID = Convert.ToInt32(txtTicketID.Text);
+            // Capture the Ticket ID directly from the TextBox and convert it to an integer
+            AnOrder.TicketID = Convert.ToInt32(txtTicketID.Text);
 
-        // Capture and directly convert the Customer ID to an integer
-        AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            // Capture and directly convert the Customer ID to an integer
+            AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
 
-        // Capture the Order Status directly from a TextBox
-        AnOrder.OrderStatus = txtOrderStatus.Text;
+            // Capture the Order Status from the CheckBox
+            AnOrder.OrderStatus = chkOrderStatus.Checked ? "Active" : "Not Active";
 
-        // Capture and directly convert the Order Date to DateTime
-        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+            // Capture and directly convert the Order Date to DateTime
+            AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
-        // Capture the Is Paid status directly from a TextBox assumed to have 'true' or 'false'
-        AnOrder.IsPaid = Convert.ToBoolean(txtIsPaid.Text);
+            // Capture the Is Paid status from the DropDownList
+            AnOrder.IsPaid = ddlIsPaid.SelectedValue == "true";
 
-        // Capture and directly convert the Total Amount to decimal
-        AnOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+            // Capture and directly convert the Total Amount to decimal
+            AnOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
 
-        // Store the order in the session object
-        Session["AnOrder"] = AnOrder;
+            // Store the order in the session object
+            Session["AnOrder"] = AnOrder;
 
-        // Navigate to the view page
-        Response.Redirect("OrdersViewer.aspx");
+            // Navigate to the view page
+            Response.Redirect("OrdersViewer.aspx");
+        }
+        catch (FormatException ex)
+        {
+            lblError.Text = "Please enter valid data: ";
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = "An error occurred: " ;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -64,20 +71,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the values of the properties in the form
                 txtTicketID.Text = AnOrder.TicketID.ToString();
                 txtCustomerID.Text = AnOrder.CustomerID.ToString();
-                txtOrderStatus.Text = AnOrder.OrderStatus;
-                txtOrderDate.Text = AnOrder.OrderDate.ToString();
-                txtIsPaid.Text = AnOrder.IsPaid.ToString();
+                chkOrderStatus.Checked = AnOrder.OrderStatus == "Active";
+                txtOrderDate.Text = AnOrder.OrderDate.ToString("yyyy-MM-dd");
+                ddlIsPaid.SelectedValue = AnOrder.IsPaid ? "true" : "false";
                 txtTotalAmount.Text = AnOrder.TotalAmount.ToString();
             }
             else
             {
-                //display an error message
                 lblError.Text = "Record not found.";
             }
         }
         catch (FormatException)
         {
-            //display an error message
             lblError.Text = "Please enter a valid numeric Order ID.";
         }
     }

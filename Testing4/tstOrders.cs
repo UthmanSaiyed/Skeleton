@@ -63,7 +63,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //create some test data to assign to the property
-            string TestData = "Completed";
+            string TestData = "Active";
             //assign the data to the property
             AnOrder.OrderStatus = TestData;
             //test to see that the two values are the same
@@ -206,7 +206,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order status property
-            if (AnOrder.OrderStatus != "Completed")
+            if (AnOrder.OrderStatus != "Active" && AnOrder.OrderStatus != "Not Active")
             {
                 OK = false;
             }
