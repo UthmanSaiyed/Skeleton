@@ -66,7 +66,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Redirect to viewer page
         Response.Redirect("StockViewer.aspx");
     }
-    protected void btnFind_click(object sender, EventArgs e) 
+    protected void btnFind_Click(object sender, EventArgs e) 
     {
         //creae an instance of the address class
         clsStock AStock = new clsStock();
