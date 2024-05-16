@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace ClassLibrary
@@ -123,9 +124,9 @@ namespace ClassLibrary
                 mInStock = value;
             }
         }
-
-        /****** FIND METHOD ******/
-        public bool Find(int TicketId)
+        
+    /****** FIND METHOD ******/
+    public bool Find(int TicketId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -153,6 +154,67 @@ namespace ClassLibrary
                 // return false indicating there is a problem
                 return false;
             }
+            
+        }
+
+        public string Valid(string eventId, string quantity, string price, string supplier, string ticketName)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the eventid is blank
+            if (eventId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The house number may be blank: ";
+            }
+            if (eventId.Length > 6)
+            {
+                //record the error
+                Error = Error + "The house no must be less than 6 characters: ";
+            }
+            if (quantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The quantity may be blank: ";
+            }
+            if (quantity.Length > 6)
+            {
+                //record the error
+                Error = Error + "The quantity must be less than 6 characters: ";
+            }
+            if (price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price may be blank: ";
+            }
+            if (price.Length > 6)
+            {
+                //record the error
+                Error = Error + "The price must be less than 6 characters: ";
+            }
+            if (supplier.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price may be blank: ";
+            }
+            if (supplier.Length > 50)
+            {
+                //record the error
+                Error = Error + "The supplier must be less than 50 characters: ";
+            }
+            if (ticketName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The ticket name may be blank: ";
+            }
+            if (ticketName.Length > 50)
+            {
+                //if the ticketname is too long
+                Error = Error + "The ticket name must be less than 50 characters: ";
+            }
+            //return any error message
+            return Error;
         }
     }
+
 }
