@@ -137,15 +137,15 @@ namespace ClassLibrary
             //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
-                //set the private data members to the test data value
-                mTicketId = 5;
-                mEventId = 101;
-                mQuantity = 1001;
-                mPrice = 4999.99M;
-                mSupplier = "Canada";
-                mTicketName = "2026 World Cup Final";
-                mInStock = true;
-                //always return true
+                //copy the data from the database to the private data members
+                mTicketId = Convert.ToInt32(DB.DataTable.Rows[0]["TicketId"]);
+                mEventId = Convert.ToInt32(DB.DataTable.Rows[0]["EventId"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mSupplier = Convert.ToString(DB.DataTable.Rows[0]["Supplier"]);
+                mTicketName = Convert.ToString(DB.DataTable.Rows[0]["TicketName"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                //return that everything worked OK
                 return true;
             }
            //if no record was found
