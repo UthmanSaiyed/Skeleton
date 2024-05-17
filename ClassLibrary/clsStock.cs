@@ -185,9 +185,9 @@ namespace ClassLibrary
             if (price.Length == 0)
             {
                 //record the error
-                Error = Error + "The price may be blank: ";
+                Error = Error + "The price must be less than 9 characters ";
             }
-            if (price.Length > 6)
+            if (price.Length > 7)
             {
                 //record the error
                 Error = Error + "The price must be less than 6 characters: ";

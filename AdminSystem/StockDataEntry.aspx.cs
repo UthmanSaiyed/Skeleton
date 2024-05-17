@@ -56,29 +56,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             AStock.Price = 0.00m; 
         }
-        Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
-        if(Error == "")
-        {
-            //capture the Eventid
-            AStock.EventId = EventId;
-            //capture the Quantity
-            AStock.Quantity = Quantity;
-            //capture the Eventid
-            AStock.Price = Price;
-            //capture the Eventid
-            AStock.Supplier = Supplier;
-            //capture the Eventid
-            AStock.TicketName = TicketName;
-            Session["AStock"] = AStock;
-
-            // Redirect to viewer page
-            Response.Redirect("StockViewer.aspx");
-        }
-        else
-        {
-            //display error
-            lblError.Text = Error;
-        }
     }
     protected void btnFind_Click(object sender, EventArgs e) 
     {

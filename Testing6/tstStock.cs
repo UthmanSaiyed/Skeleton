@@ -602,8 +602,8 @@ namespace Testing6
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string Price = "1111111"; //this should trigger an error
-                                         //invoke the method
+            string Price = ""; //this should trigger an error
+            Price = Price.PadRight(8, '1');                      //invoke the method
             Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
