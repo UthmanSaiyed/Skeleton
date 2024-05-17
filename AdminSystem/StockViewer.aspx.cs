@@ -11,6 +11,7 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        { 
         // Check if the session contains the Stock object and retrieve it
         
             // Cast the session object back to clstype

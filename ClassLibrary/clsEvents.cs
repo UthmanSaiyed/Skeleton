@@ -19,7 +19,7 @@ namespace ClassLibrary
         }
 
         // Method to get Time property
-        public string GetTime()
+        public string GetTime(string time)
         {
             return Time;
         }

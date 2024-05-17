@@ -29,7 +29,7 @@ namespace Testing3
             //Assigning test data
             AnEvent.EventID = TestData;
 
-            // checking if the data is working
+            // checking if the method is working
             Assert.AreEqual(AnEvent.EventID, TestData);
         }
 
@@ -52,7 +52,7 @@ namespace Testing3
         {
             // Arrange
             clsEvents AnEvent = new clsEvents();
-            string testData = "Conference Room"; // Example test data
+            string testData = "Uthman's BackYard"; // Example test data
 
             // Act
             AnEvent.Location = testData;
