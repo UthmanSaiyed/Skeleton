@@ -23,35 +23,22 @@ namespace ClassLibrary
 
 
 
-        //private data member for the firstname property
-        private string mFirstname;
-        public string Firstname
+        //private data member for the Name property
+        private string mName;
+        public string Name
         {
             get
             { //this sends data out of the property
-                return mFirstname;
+                return mName;
             }
             set
             {
                 //this allows data into the property
-                mFirstname = value;
+                mName = value;
             }
         }
 
-        //private data member for the lastname property
-        private string mLastname;
-        public string Lastname
-        {
-            get
-            { //this sends data out of the property
-                return mLastname;
-            }
-            set
-            {
-                //this allows data into the property
-                mLastname = value;
-            }
-        }
+
 
         //private data member for the email property
         private string mEmail;
@@ -138,8 +125,8 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                mFirstname = Convert.ToString(DB.DataTable.Rows[0]["Firstname"]);
-                mLastname = Convert.ToString(DB.DataTable.Rows[0]["Lastname"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+              
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
                 mBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BirthDate"]);
                 mPhonenumber = Convert.ToString(DB.DataTable.Rows[0]["Phonenumber"]);

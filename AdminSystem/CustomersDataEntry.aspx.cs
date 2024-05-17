@@ -21,11 +21,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the CustomerID
         ACustomer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
                  
-        //capture firstname
-        ACustomer.Firstname = txtFirstname.Text;
+        //capture Name
+        ACustomer.Name = txtName.Text;
 
-        //capture lastname
-        ACustomer.Lastname = txtLastname.Text;
+     
 
         //capture email
         ACustomer.Email = txtEmail.Text;
