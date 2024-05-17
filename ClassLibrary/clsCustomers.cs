@@ -116,17 +116,16 @@ namespace ClassLibrary
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
-            //add the parameter for the OrderID to search for
+            //add the parameter for the Customer to search for
             DB.AddParameter("@CustomerID", CustomerID);
             //execute the stored procedure
-            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
             //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-              
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
                 mBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BirthDate"]);
                 mPhonenumber = Convert.ToString(DB.DataTable.Rows[0]["Phonenumber"]);

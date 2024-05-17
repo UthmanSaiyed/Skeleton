@@ -123,7 +123,7 @@ namespace Testing2
             bool Found = false;
 
             //create some test data to use with the method
-            Int32 CustomerID = 4;
+            Int32 CustomerID = 12;
 
             //invoke the method
             Found = ACustomer.Find(CustomerID);
@@ -146,13 +146,13 @@ namespace Testing2
             bool OK = true;
 
             //create some test data to use with the method
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 12;
 
             //invoke the method
             Found = ACustomer.Find(CustomerID);
 
             //check customerid
-            if (ACustomer.CustomerID != 4) 
+            if (ACustomer.CustomerID != 12) 
             { 
                 OK = false;
             }
@@ -163,31 +163,17 @@ namespace Testing2
         [TestMethod]
         public void TestNameFound()
         {
-            //create an instance of the class we want to create
             clsCustomers ACustomer = new clsCustomers();
-
-            //create a boolean variable to store the result of the search
-            bool Found = false;
-
-            //create a boolean variable to record if data is ok
+            bool Found = false;   
             bool OK = true;
-
-            //create some test data to use with the method
-            int CustomerID = 4;
-
-            //invoke the method
+            Int32 CustomerID = 12;
             Found = ACustomer.Find(CustomerID);
-
-            //check customerid
-            if (ACustomer.Name != "Javk")
+            if (ACustomer.Name != "Twelve                             ")
             {
                 OK = false;
             }
-            //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-
-     
         [TestMethod]
         public void TestEmailFound()
         {
@@ -200,13 +186,13 @@ namespace Testing2
             //create a boolean variable to record if data is ok
             bool OK = true;
 
-            Int32 CustomerID = 4;
+            Int32 CustomerID = 12;
 
             //invoke the method
             Found = ACustomer.Find(CustomerID);
 
             //check customerid
-            if (ACustomer.Email != "paulopsa@gmail.com")
+            if (ACustomer.Email != "Twelve@gmail.com")
             {
                 OK = false;
             }
@@ -223,11 +209,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int CustomerID = 4;
+            int CustomerID = 12;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the order date property
-            if (ACustomer.BirthDate != Convert.ToDateTime("21/07/1990"))
+            if (ACustomer.BirthDate != Convert.ToDateTime("12/12/2012"))
             {
                 OK = false;
             }
@@ -247,13 +233,13 @@ namespace Testing2
             //create a boolean variable to record if data is ok
             Boolean OK = true;
 
-            int CustomerID = 4;
+            int CustomerID = 12;
 
             //invoke the method
             Found = ACustomer.Find(CustomerID);
 
             //check customerid
-            if (ACustomer.Phonenumber != "07796895049")
+            if (ACustomer.Phonenumber != "00000000000")
             {
                 OK = false;
             }
@@ -271,7 +257,7 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             bool OK = true;
             //create some test data to use with the method
-            int CustomerID = 4;
+            int CustomerID = 12;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the is paid property
@@ -293,7 +279,7 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int CustomerID = 4;
+            int CustomerID = 12;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the is paid property
