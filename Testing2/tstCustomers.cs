@@ -31,30 +31,19 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void FirstnameProperty()
+        public void NameProperty()
         {
             //create an instance of the class we want to create
             clsCustomers ACustomer = new clsCustomers();
             //create some test data to assign to the property
             string TestData = "Peter";
             //assign the data to the property
-            ACustomer.Firstname = TestData;
+            ACustomer.Name = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.Firstname, TestData);
+            Assert.AreEqual(ACustomer.Name, TestData);
         }
 
-        [TestMethod]
-        public void LastnameProperty()
-        {
-            //create an instance of the class we want to create
-            clsCustomers ACustomer = new clsCustomers();
-            //create some test data to assign to the property
-            string TestData = "Mopo";
-            //assign the data to the property
-            ACustomer.Lastname = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.Lastname, TestData);
-        }
+     
 
         [TestMethod]
         public void EmailProperty()
@@ -172,7 +161,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestFirstnameFound()
+        public void TestNameFound()
         {
             //create an instance of the class we want to create
             clsCustomers ACustomer = new clsCustomers();
@@ -190,7 +179,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerID);
 
             //check customerid
-            if (ACustomer.Firstname != "Javk")
+            if (ACustomer.Name != "Javk")
             {
                 OK = false;
             }
@@ -198,32 +187,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
-        [TestMethod]
-        public void TestLastnameFound()
-        {
-            //create an instance of the class we want to create
-            clsCustomers ACustomer = new clsCustomers();
-
-            //create a boolean variable to store the result of the search
-            bool Found = false;
-
-            //create a boolean variable to record if data is ok
-            bool OK = true;
-
-            int CustomerID = 4;
-
-            //invoke the method
-            Found = ACustomer.Find(CustomerID);
-
-            //check customerid
-            if (ACustomer.Lastname != "Peter")
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
-
+     
         [TestMethod]
         public void TestEmailFound()
         {

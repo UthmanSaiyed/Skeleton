@@ -13,17 +13,13 @@
             <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 208px; top: 86px; position: absolute"></asp:TextBox>
         </div>
         <p>
-            <asp:Label ID="lblFirstname" runat="server" style="z-index: 1; left: 104px; top: 120px; position: absolute" Text="Firstname" width="79px"></asp:Label>
+            <asp:Label ID="lblName" runat="server" style="z-index: 1; left: 104px; top: 120px; position: absolute" Text="Name" width="79px"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtFirstname" runat="server" style="z-index: 1; left: 208px; top: 121px; position: absolute"></asp:TextBox>
+            <asp:TextBox ID="txtName" runat="server" style="z-index: 1; left: 208px; top: 121px; position: absolute"></asp:TextBox>
         </p>
-        <p>
-            <asp:TextBox ID="txtLastname" runat="server" style="z-index: 1; left: 208px; top: 155px; position: absolute"></asp:TextBox>
-        </p>
-        <p>
-            <asp:Label ID="lblLastname" runat="server" style="z-index: 1; left: 104px; top: 155px; position: absolute; width: 79px" Text="Lastname"></asp:Label>
-        </p>
+       
+      
         <asp:Label ID="lblEmail" runat="server" style="z-index: 1; left: 104px; top: 184px; position: absolute; bottom: 473px" Text="Email"></asp:Label>
         <p>
             <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 208px; top: 184px; position: absolute"></asp:TextBox>
