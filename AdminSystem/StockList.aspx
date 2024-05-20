@@ -10,7 +10,10 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstStockList" runat="server" Height="700px" Width="799px"></asp:ListBox>
+        <asp:ListBox ID="lstStockList" runat="server" Height="484px" Width="657px"></asp:ListBox>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" Text="Add" />
+        </p>
     </form>
 </body>
 </html>
