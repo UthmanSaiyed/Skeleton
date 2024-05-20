@@ -17,67 +17,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         // Create a new instance of clsStock
         clsStock AStock = new clsStock();
-
-       
-        if (!string.IsNullOrEmpty(txtTicketId.Text))
-        {
-            AStock.TicketId = Convert.ToInt32(txtTicketId.Text);
-        }
-        else
-        {
-            // Handles if ticket id is not provided
-            AStock.TicketId = 0; 
-        }
-
-        if (!string.IsNullOrEmpty(txtEventId.Text))
-        {
-            AStock.EventId = Convert.ToInt32(txtEventId.Text);
-        }
-        else
-        {
-            AStock.EventId = 0; 
-        }
-
-
-        if (!string.IsNullOrEmpty(txtQuantity.Text))
-        {
-            AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
-        }
-        else
-        {
-            AStock.Quantity = 0; 
-        }
-
-        if (!string.IsNullOrEmpty(txtPrice.Text))
-        {
-            AStock.Price = Convert.ToDecimal(txtPrice.Text);
-        }
-        else
-        {
-            AStock.Price = 0.00m; 
-        }
-        /*string Error = "";
+        //capture the eventid
+        string EventId = txtEventId.Text;
+        //capture the quantity
+        string Quantity = txtQuantity.Text;
+        //capture the price
+        string Price = txtPrice.Text;
+        //capture the supplier
+        string Supplier = txtPrice.Text;  
+        //capture the ticketname
+        string TicketName = txtTicketName.Text; 
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
         Error = AStock.Valid(EventId,Quantity, Price, Supplier, TicketName);
         if (Error == "")
         {
             //capture the eventid
-            AStock.EventId = EventId;
+            AStock.EventId = Convert.ToInt32(EventId);
             //capture the quantity
-            AStock.Quantity = Quantity;
+            AStock.Quantity = Convert.ToInt32(Quantity);
             //capture the price
-            AStock.Price = Price;
+            AStock.Price = Convert.ToDecimal(Price);
             //capture the supplier
             AStock.Supplier = Supplier;
             //capture the ticketname
             AStock.TicketName = TicketName;
+            //create a new instance of the stock collection
+            clsStockCollection StockList = new clsStockCollection();    
+            //set the ThisStock property
+            StockList.ThisStock = AStock;
+            //add the new record
+            StockList.Add();
+            //redirect back to the list page
+            Response.Redirect("StockList.aspx");
         }
         else
         {
             //display the error message
             lblError.Text = Error;
-        }*/
-        Session["AStock"] = AStock;
-        Response.Redirect("StockViewer.aspx");
+        }
     }
     protected void btnFind_Click(object sender, EventArgs e) 
     {

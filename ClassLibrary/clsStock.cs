@@ -165,12 +165,12 @@ namespace ClassLibrary
             if (eventId.Length == 0)
             {
                 //record the error
-                Error = Error + "The house number may be blank: ";
+                Error = Error + "The eventid may be blank: ";
             }
             if (eventId.Length > 6)
             {
                 //record the error
-                Error = Error + "The house no must be less than 6 characters: ";
+                Error = Error + "The eventid must be less than 6 characters: ";
             }
             if (quantity.Length == 0)
             {
