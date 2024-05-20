@@ -9,9 +9,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 TicketId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the Stock to be processed
+        TicketId = Convert.ToInt32(Session["TicketId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (TicketId != -1)
+            {
+                //display the current data of the record
+                DisplayStock();
+            }
+        }
     }
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -45,10 +57,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.TicketName = TicketName;
             //create a new instance of the stock collection
             clsStockCollection StockList = new clsStockCollection();    
-            //set the ThisStock property
-            StockList.ThisStock = AStock;
-            //add the new record
-            StockList.Add();
+
+            //if this a new record of the stock collection
+            if (TicketId == -1)
+            {
+                //set thisStock property
+                StockList.ThisStock = AStock;
+                //adds the new record
+                StockList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StockList.ThisStock.Find(TicketId);
+                //set the thisStock property
+                StockList.ThisStock = AStock;
+                //update the record
+                StockList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("StockList.aspx");
         }
@@ -96,5 +123,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Please enter a valid numeric Ticket ID.";
         }
     }
-
+    void DisplayStock()
+    {
+        //create an instance of the stock
+        clsStockCollection Stock = new clsStockCollection();
+        //find the record to update
+        Stock.ThisStock.Find(TicketId);
+        //display the data for the record
+        txtTicketId.Text = Stock.ThisStock.TicketId.ToString();
+        txtEventId.Text = Stock.ThisStock.EventId.ToString();
+        txtQuantity.Text = Stock.ThisStock.Quantity.ToString();
+        txtPrice.Text = Stock.ThisStock.Price.ToString();
+        txtSupplier.Text = Stock.ThisStock.Supplier;
+        txtTicketName.Text = Stock.ThisStock.TicketName;
+        //chkInStock.Checked = Stock.ThisStock.InStock;
+    }
 }
