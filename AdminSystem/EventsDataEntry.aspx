@@ -15,8 +15,6 @@
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
-        <p>
             <asp:TextBox ID="txtTitle" runat="server" style="z-index: 1; left: 111px; top: 112px; position: absolute" width="128px"></asp:TextBox>
         </p>
         <p>
