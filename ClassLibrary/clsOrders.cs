@@ -22,9 +22,9 @@ namespace ClassLibrary
         }
 
         //private data member for the TicketID property
-        private int mTicketID;
+        private string mTicketID;
         //TicketID public property
-        public int TicketID
+        public string TicketID
         {
             get
             {
@@ -39,9 +39,9 @@ namespace ClassLibrary
         }
 
         //private data member for the CustomerID property
-        private int mCustomerID;
+        private string mCustomerID;
         //CustomerID public property
-        public int CustomerID
+        public string CustomerID
         {
             get
             {
@@ -137,8 +137,8 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                mTicketID = Convert.ToInt32(DB.DataTable.Rows[0]["TicketID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mTicketID = Convert.ToString(DB.DataTable.Rows[0]["TicketID"]);
+                mCustomerID = Convert.ToString(DB.DataTable.Rows[0]["CustomerID"]);
                 mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mIsPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["IsPaid"]);
@@ -152,6 +152,84 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
+        }
+
+        public string Valid(string ticketID, string customerID, string orderDate, string totalAmount)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the TicketID is blank
+            if (ticketID.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Ticket ID may not be blank : ";
+            }
+            //if the TicketID is greater than 6 characters
+            if (ticketID.Length > 6)
+            {
+                //record the error 
+                Error = Error + "The Ticket ID must be less than 6 characters : ";
+            }
+
+            //if the CustomerID is blank
+            if (customerID.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer ID may not be blank : ";
+            }
+            //if the CustomerID is greater than 6 characters
+            if (customerID.Length > 6)
+            {
+                //record the error 
+                Error = Error + "The Customer ID must be less than 6 characters : ";
+            }
+
+            //validate the OrderDate
+            try
+            {
+                //copy the OrderDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error 
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //validate the TotalAmount
+            try
+            {
+                decimal TotalAmountTemp = Convert.ToDecimal(totalAmount);
+                if (TotalAmountTemp <= 0)
+                {
+                    Error = Error + "The total amount must be greater than zero : ";
+                }
+                if (TotalAmountTemp > 999999.99M)
+                {
+                    Error = Error + "The total amount must be less than 1,000,000 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The total amount is not a valid decimal : ";
+            }
+
+            //return any error messages
+            return Error;
         }
     }
 }
