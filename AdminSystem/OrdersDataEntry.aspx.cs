@@ -16,11 +16,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Create a new instance of clsOrders
             clsOrders AnOrder = new clsOrders();
 
-            // Capture the Ticket ID directly from the TextBox and convert it to an integer
-            AnOrder.TicketID = Convert.ToInt32(txtTicketID.Text);
+            // Capture the Ticket ID directly from the TextBox as string
+            AnOrder.TicketID = txtTicketID.Text;
 
-            // Capture and directly convert the Customer ID to an integer
-            AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            // Capture the Customer ID directly from the TextBox as string
+            AnOrder.CustomerID = txtCustomerID.Text;
 
             // Capture the Order Status from the CheckBox
             AnOrder.OrderStatus = chkOrderStatus.Checked ? "Active" : "Not Active";
@@ -42,35 +42,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         catch (FormatException ex)
         {
-            lblError.Text = "Please enter valid data: ";
+            lblError.Text = "Please enter valid data: " + ex.Message;
         }
         catch (Exception ex)
         {
-            lblError.Text = "An error occurred: " ;
+            lblError.Text = "An error occurred: " + ex.Message;
         }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        //create an instance of the clsOrders class
+        // Create an instance of the clsOrders class
         clsOrders AnOrder = new clsOrders();
-        //create a variable to store the primary key
+        // Create a variable to store the primary key
         Int32 OrderID;
-        //create a variable to store the result of the find operation
+        // Create a variable to store the result of the find operation
         Boolean Found = false;
 
-        //try to convert the primary key entered by the user
+        // Try to convert the primary key entered by the user
         try
         {
             OrderID = Convert.ToInt32(txtOrderID.Text);
-            //find the record
+            // Find the record
             Found = AnOrder.Find(OrderID);
-            //if found
+            // If found
             if (Found == true)
             {
-                //display the values of the properties in the form
-                txtTicketID.Text = AnOrder.TicketID.ToString();
-                txtCustomerID.Text = AnOrder.CustomerID.ToString();
+                // Display the values of the properties in the form
+                txtTicketID.Text = AnOrder.TicketID;
+                txtCustomerID.Text = AnOrder.CustomerID;
                 chkOrderStatus.Checked = AnOrder.OrderStatus == "Active";
                 txtOrderDate.Text = AnOrder.OrderDate.ToString("yyyy-MM-dd");
                 ddlIsPaid.SelectedValue = AnOrder.IsPaid ? "true" : "false";
