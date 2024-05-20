@@ -116,5 +116,43 @@ namespace Testing6
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.InStock = true;
+            TestItem.EventId = 1001;
+            TestItem.Quantity = 1001;
+            TestItem.Price = 3499.99M;
+            TestItem.Supplier = "Quebec";
+            TestItem.TicketName = "2026 World Cup Knockout";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.TicketId = PrimaryKey;
+            //modify the test record
+            TestItem.InStock = false;
+            TestItem.EventId = 399;
+            TestItem.Quantity = 100;
+            TestItem.Price = 4999.99M;
+            TestItem.Supplier = "UEFA";
+            TestItem.TicketName = "2024 Champions League Final";
+            //set the record based on the new test data
+            AllStock.ThisStock = TestItem;
+            //update the record
+            AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see if ThisStock matches the test data
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
     }
 }
