@@ -6,33 +6,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        // Any initialization code if needed
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        try
+        // Create a new instance of clsOrders
+        clsOrders AnOrder = new clsOrders();
+
+        // Capture the input data
+        string TicketID = txtTicketID.Text;
+        string CustomerID = txtCustomerID.Text;
+        string OrderDate = txtOrderDate.Text;
+        string TotalAmount = txtTotalAmount.Text;
+        string OrderStatus = chkOrderStatus.Checked ? "Active" : "Not Active";
+        bool IsPaid = chkIsPaid.Checked;
+
+        // Variable to store any error messages
+        string Error = "";
+
+        // Validate the data
+        Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+
+        // If there are no errors
+        if (Error == "")
         {
-            // Create a new instance of clsOrders
-            clsOrders AnOrder = new clsOrders();
-
-            // Capture the Ticket ID directly from the TextBox as string
-            AnOrder.TicketID = txtTicketID.Text;
-
-            // Capture the Customer ID directly from the TextBox as string
-            AnOrder.CustomerID = txtCustomerID.Text;
-
-            // Capture the Order Status from the CheckBox
-            AnOrder.OrderStatus = chkOrderStatus.Checked ? "Active" : "Not Active";
-
-            // Capture and directly convert the Order Date to DateTime
-            AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-
-            // Capture the Is Paid status from the DropDownList
-            AnOrder.IsPaid = ddlIsPaid.SelectedValue == "true";
-
-            // Capture and directly convert the Total Amount to decimal
-            AnOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+            // Capture the data
+            AnOrder.TicketID = TicketID;
+            AnOrder.CustomerID = CustomerID;
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            AnOrder.TotalAmount = Convert.ToDecimal(TotalAmount);
+            AnOrder.OrderStatus = OrderStatus;
+            AnOrder.IsPaid = IsPaid;
 
             // Store the order in the session object
             Session["AnOrder"] = AnOrder;
@@ -40,13 +45,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Navigate to the view page
             Response.Redirect("OrdersViewer.aspx");
         }
-        catch (FormatException ex)
+        else
         {
-            lblError.Text = "Please enter valid data: " + ex.Message;
-        }
-        catch (Exception ex)
-        {
-            lblError.Text = "An error occurred: " + ex.Message;
+            // Display the error message
+            lblError.Text = Error;
         }
     }
 
@@ -73,7 +75,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtCustomerID.Text = AnOrder.CustomerID;
                 chkOrderStatus.Checked = AnOrder.OrderStatus == "Active";
                 txtOrderDate.Text = AnOrder.OrderDate.ToString("yyyy-MM-dd");
-                ddlIsPaid.SelectedValue = AnOrder.IsPaid ? "true" : "false";
+                chkIsPaid.Checked = AnOrder.IsPaid;
                 txtTotalAmount.Text = AnOrder.TotalAmount.ToString();
             }
             else

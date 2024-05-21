@@ -193,10 +193,10 @@ namespace ClassLibrary
             {
                 //copy the OrderDate value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(orderDate);
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date.AddYears(-100))
                 {
                     //record the error
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The date cannot be more than 100 years in the past : ";
                 }
                 if (DateTemp > DateTime.Now.Date)
                 {

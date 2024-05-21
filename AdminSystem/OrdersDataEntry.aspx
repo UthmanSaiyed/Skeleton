@@ -32,10 +32,7 @@
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 34px; top: 301px; position: absolute" Text="Order Date" width="175px"></asp:Label>
         <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 238px; top: 302px; position: absolute" width="248px" height="38px"></asp:TextBox>
         <asp:Label ID="lblIsPaid" runat="server" style="z-index: 1; left: 34px; top: 361px; position: absolute" Text="Is Paid" width="175px"></asp:Label>
-        <asp:DropDownList ID="ddlIsPaid" runat="server" style="z-index: 1; left: 238px; top: 369px; position: absolute; width: 248px">
-            <asp:ListItem Text="Yes" Value="true"></asp:ListItem>
-            <asp:ListItem Text="No" Value="false"></asp:ListItem>
-        </asp:DropDownList>
+        <asp:CheckBox ID="chkIsPaid" runat="server" style="z-index: 1; left: 238px; top: 365px; position: absolute; width: 248px;" Text="Paid" height="38px" />
         <asp:Label ID="lblTotalAmount" runat="server" style="z-index: 1; left: 34px; top: 420px; position: absolute" Text="Total Amount"></asp:Label>
         <asp:TextBox ID="txtTotalAmount" runat="server" style="z-index: 1; left: 238px; top: 421px; position: absolute" width="248px" height="38px"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 35px; top: 470px; position: absolute; color: black;"></asp:Label>
