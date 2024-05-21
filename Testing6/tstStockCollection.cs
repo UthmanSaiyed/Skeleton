@@ -154,5 +154,59 @@ namespace Testing6
             //test to see if ThisStock matches the test data
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        /*[TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.TicketId = 6;
+            TestItem.EventId = 1001;
+            TestItem.Quantity = 1001;
+            TestItem.Price = 3499.99M;
+            TestItem.Supplier = "Quebec";
+            TestItem.TicketName = "2026 World Cup Knockout";
+            //set thisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.TicketId = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //delete the record
+            AllStock.Delete();
+            //now find the record
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        /*[TestMethod]
+        public void ReportBySupplierMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a blank string (should return all records)
+            FilteredStock.ReportBySupplier("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+        }
+        [TestMethod]
+        public void ReportBySupplierNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a supplier that doesn't exist
+            FilteredStock.ReportBySupplier("xxx xxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilteredStock.Count);
+        }*/
     }
 }
