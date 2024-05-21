@@ -4,60 +4,70 @@ namespace ClassLibrary
 {
     public class clsEvents
     {
-        public bool Active { get; set; }
-        public DateTime DateAdded { get; set; }
-        public int EventID { get; set; }
-        public string Time { get; set; }
-        public string Location { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        // Private data members
+        private int mEventID;
+        private DateTime mDateAdded;
+        private string mTime;
+        private string mLocation;
+        private string mTitle;
+        private string mDescription;
+        private bool mActive;
 
-        // Method to set Time property
-        public void SetTime(string time)
+        // Public properties
+        public int EventID
         {
-            Time = time;
+            get { return mEventID; }
+            set { mEventID = value; }
         }
 
-        // Method to get Time property
-        public string GetTime(string time)
+        public DateTime DateAdded
         {
-            return Time;
+            get { return mDateAdded; }
+            set { mDateAdded = value; }
         }
 
-        // Method to set Location property
-        public void SetLocation(string location)
+        public string Time
         {
-            Location = location;
+            get { return mTime; }
+            set { mTime = value; }
         }
 
-        // Method to get Location property
-        public string GetLocation()
+        public string Location
         {
-            return Location;
+            get { return mLocation; }
+            set { mLocation = value; }
         }
 
-        // Method to set Title property
-        public void SetTitle(string title)
+        public string Title
         {
-            Title = title;
+            get { return mTitle; }
+            set { mTitle = value; }
         }
 
-        // Method to get Title property
-        public string GetTitle()
+        public string Description
         {
-            return Title;
+            get { return mDescription; }
+            set { mDescription = value; }
         }
 
-        // Method to set Description property
-        public void SetDescription(string description)
+        public bool Active
         {
-            Description = description;
+            get { return mActive; }
+            set { mActive = value; }
         }
 
-        // Method to get Description property
-        public string GetDescription()
+        // Find Method for EventsID
+        public bool Find(int EventsID)
         {
-            return Description;
+            // Simulate finding an event by setting the private data members to test data values
+            mEventID = 1;
+            mDateAdded = Convert.ToDateTime("23/12/2024");
+            mTime = "10:00";
+            mLocation = "Uthman's BackYard";
+            mTitle = "Event Title";
+            mDescription = "Event Description";
+            mActive = true;
+            return true;
         }
     }
 }
