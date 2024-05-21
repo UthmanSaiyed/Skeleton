@@ -14,10 +14,10 @@ public partial class _1_List : System.Web.UI.Page
         if (!IsPostBack == false) 
         {
             //update the list box
-            DisplayStock();
+            DisplayStocks();
         }
     }
-    void DisplayStock()
+    void DisplayStocks()
     {
         //create an instance of the Stock Collection
         clsStockCollection Stock = new clsStockCollection();
