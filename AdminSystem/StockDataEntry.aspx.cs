@@ -38,13 +38,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the supplier
         string Supplier = txtPrice.Text;  
         //capture the ticketname
-        string TicketName = txtTicketName.Text; 
+        string TicketName = txtTicketName.Text;
+        //capture InStock checkbox
+        string Active = chkInStock.Text;
         //variable to store any error messages
         string Error = "";
         //validate the data
         Error = AStock.Valid(EventId,Quantity, Price, Supplier, TicketName);
         if (Error == "")
         {
+            //captures the ticketid
+            AStock.TicketId = TicketId; 
             //capture the eventid
             AStock.EventId = Convert.ToInt32(EventId);
             //capture the quantity
@@ -55,6 +59,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.Supplier = Supplier;
             //capture the ticketname
             AStock.TicketName = TicketName;
+            //capture inStock
+            AStock.InStock = chkInStock.Checked;
             //create a new instance of the stock collection
             clsStockCollection StockList = new clsStockCollection();    
 
@@ -110,6 +116,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtPrice.Text = AStock.Price.ToString();
                 txtSupplier.Text = AStock.Supplier;
                 txtTicketName.Text = AStock.TicketName;
+                chkInStock.Checked = AStock.InStock;
             }
             else
             {
@@ -136,6 +143,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtPrice.Text = Stock.ThisStock.Price.ToString();
         txtSupplier.Text = Stock.ThisStock.Supplier;
         txtTicketName.Text = Stock.ThisStock.TicketName;
-        //chkInStock.Checked = Stock.ThisStock.InStock;
+        chkInStock.Checked = Stock.ThisStock.InStock;
     }
 }
