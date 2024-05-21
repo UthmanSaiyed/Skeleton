@@ -29,10 +29,10 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Date: " + AnEvent.DateAdded.ToShortDateString() + "<br/>");
 
         //display the Event time for this entry
-        Response.Write("EventID: " + (AnEvent.Time) + "<br>");
+        Response.Write("Time: " + (AnEvent.Time) + "<br>");
 
         //display the Event Description for this entry
-        Response.Write("EventID: " + (AnEvent.Description) + "<br>");
+        Response.Write("Description: " + (AnEvent.Description) + "<br>");
 
         //display the Event Active checkBox for this entry
         Response.Write(AnEvent.Active);

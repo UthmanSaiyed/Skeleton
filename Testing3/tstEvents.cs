@@ -10,26 +10,26 @@ namespace Testing3
         [TestMethod]
         public void TestEvents()
         {
-            //create an instance of the class
+            // Create an instance of the class
             clsEvents AnEvent = new clsEvents();
 
-            //test to see if the instance exist or not
+            // Test to see if the instance exists or not
             Assert.IsNotNull(AnEvent);
         }
 
         [TestMethod]
         public void TestEventIDProperty()
         {
-            //creating an instance of the class
+            // Create an instance of the class
             clsEvents AnEvent = new clsEvents();
 
-            //Creating Test Data 
+            // Create test data
             int TestData = 1;
 
-            //Assigning test data
+            // Assign test data
             AnEvent.EventID = TestData;
 
-            // checking if the method is working
+            // Check if the method is working
             Assert.AreEqual(AnEvent.EventID, TestData);
         }
 
@@ -106,17 +106,201 @@ namespace Testing3
         [TestMethod]
         public void TestActiveProperties()
         {
-            // create an instance of the class
+            // Create an instance of the class
             clsEvents AnEvent = new clsEvents();
 
-            //creating some test data to assign to the property
+            // Create test data
             bool TestData = true;
 
-            //assign a value to test the boolean
+            // Assign a value to the property
             AnEvent.Active = TestData;
 
-            //If the Active property behaves correctly, this assertion should pass
+            // Check if the Active property behaves correctly
             Assert.AreEqual(AnEvent.Active, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethod()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check event ID
+            if (AnEvent.EventID != 1)
+            {
+                OK = false;
+            }
+
+            // Test if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the DateAdded property
+            if (AnEvent.DateAdded != Convert.ToDateTime("23/12/2024"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTimeFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the Time property
+            if (AnEvent.Time != "10:00")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestLocationFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the Location property
+            if (AnEvent.Location != "Uthman's BackYard")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTitleFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the Title property
+            if (AnEvent.Title != "Event Title")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDescriptionFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the Description property
+            if (AnEvent.Description != "Event Description")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            // Create an instance of the class
+            clsEvents AnEvent = new clsEvents();
+
+            // Boolean variable to store the search result
+            bool found = false;
+
+            // Create a boolean variable to record if the data is OK
+            bool OK = true;
+
+            // Create test data to assign to the property
+            int EventsID = 1;
+
+            // Assign a value to test the boolean
+            found = AnEvent.Find(EventsID);
+
+            // Check the Active property
+            if (AnEvent.Active != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
