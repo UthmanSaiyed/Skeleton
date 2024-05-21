@@ -133,20 +133,6 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void ValidMethodOK()
-        {
-            //create an instance of the class we want to create
-            clsOrders AnOrder = new clsOrders();
-            //string variable to store any error message
-            string Error = "";
-            //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        /******************PROPERTY DATA TESTS******************/
-        [TestMethod]
         public void TestOrderIDFound()
         {
             //create an instance of the class we want to create
@@ -226,7 +212,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order status property
-            if (AnOrder.OrderStatus != "Active" && AnOrder.OrderStatus != "Not Active")
+            if (AnOrder.OrderStatus != "Active")
             {
                 OK = false;
             }
@@ -300,6 +286,20 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        /******************TICKET ID VALIDATION TESTS******************/
         [TestMethod]
         public void TicketIDMinLessOne()
         {
@@ -421,27 +421,7 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void OrderDateExtremeMin()
-        {
-            //create an instance of the class we want to create
-            clsOrders AnOrder = new clsOrders();
-            //string variable to store any error message
-            String Error = "";
-            //create a variable to store the test date data
-            DateTime TestDate;
-            //set the date to todays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(-100);
-            //convert the data variable to a string variable
-            string OrderDate = TestDate.ToString();
-            //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
-            //test to see if the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
+        /******************ORDER DATE VALIDATION TESTS******************/
         [TestMethod]
         public void OrderDateMinLessOne()
         {
@@ -451,16 +431,37 @@ namespace Testing4
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
-            //set the date to todays date
+            //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 1 day
             TestDate = TestDate.AddDays(-1);
             //convert the data variable to a string variable
-            string OrderDate = TestDate.ToString();
+            string OrderDate = TestDate.ToShortDateString();
             //invoke the method
             Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
             //test to see if the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual("", Error); // Past dates should be valid
+        }
+
+        [TestMethod]
+        public void OrderDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 101 years (to fail the validation)
+            TestDate = TestDate.AddYears(-101);
+            //convert the data variable to a string variable
+            string OrderDate = TestDate.ToShortDateString();
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreNotEqual("", Error); // Extremely past dates should be invalid
         }
 
         [TestMethod]
@@ -472,7 +473,7 @@ namespace Testing4
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
-            //set the date to todays date
+            //set the date to today's date
             TestDate = DateTime.Now.Date;
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToString();
@@ -491,7 +492,7 @@ namespace Testing4
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
-            //set the date to todays date
+            //set the date to today's date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is plus 1 day
             TestDate = TestDate.AddDays(1);
@@ -512,9 +513,9 @@ namespace Testing4
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
-            //set the date to todays date
+            //set the date to today's date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the data is plus 100 years
+            //change the date to whatever the date is plus 100 years
             TestDate = TestDate.AddYears(100);
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToString();
@@ -531,7 +532,7 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
-            //set the OrderDate to a non date value
+            //set the OrderDate to a non-date value
             string OrderDate = "this is not a date!";
             //invoke the method
             Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
@@ -539,6 +540,7 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        /******************CUSTOMER ID VALIDATION TESTS******************/
         [TestMethod]
         public void CustomerIDMinLessOne()
         {
@@ -562,7 +564,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "a"; //this should be ok
+            string CustomerID = "1"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
             //test to see if the result is correct
@@ -577,7 +579,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "aa"; //this should be ok
+            string CustomerID = "11"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
             //test to see if the result is correct
@@ -660,6 +662,7 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        /******************TOTAL AMOUNT VALIDATION TESTS******************/
         [TestMethod]
         public void TotalAmountExtremeMin()
         {
@@ -721,7 +724,52 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TotalAmountExtremeMax()
+        public void TotalAmountMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string TotalAmount = "999999.98"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMax()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string TotalAmount = "999999.99"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMid()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string TotalAmount = "500000.00"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -729,7 +777,23 @@ namespace Testing4
             String Error = "";
             //create some test data to pass the method
             string TotalAmount = "1000000"; //this should trigger an error
-                                            //invoke the method
+            //invoke the method
+            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            //test to see if the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string TotalAmount = "";
+            TotalAmount = TotalAmount.PadRight(500, '1'); //this should fail
+            //invoke the method
             Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
