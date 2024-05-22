@@ -45,6 +45,7 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsEvents.cs" />
     <Compile Include="clsOrders.cs" />
+    <Compile Include="clsOrdersCollection.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsStockCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
