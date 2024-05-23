@@ -154,7 +154,7 @@ namespace Testing6
             //test to see if ThisStock matches the test data
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
-        /*[TestMethod]
+        [TestMethod]
         public void DeleteMethodOK()
         {
             //create an instance of the class we want to create
@@ -186,7 +186,7 @@ namespace Testing6
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
-        /*[TestMethod]
+        [TestMethod]
         public void ReportBySupplierMethodOK()
         {
             //create an instance of the class we want to create
@@ -207,6 +207,6 @@ namespace Testing6
             FilteredStock.ReportBySupplier("xxx xxx");
             //test to see that the two values are the same
             Assert.AreEqual(0, FilteredStock.Count);
-        }*/
+        }
     }
 }

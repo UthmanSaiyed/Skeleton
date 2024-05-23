@@ -11,7 +11,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
-        if (!IsPostBack == false) 
+        if (IsPostBack == false) 
         {
             //update the list box
             DisplayStocks();
@@ -24,9 +24,9 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source to the list of stock in the collection
         lstStockList.DataSource = Stock.StockList;
         //set the name of the primary key
-        lstStockList.DataValueField = "TicketNo";
+        lstStockList.DataValueField = "TicketId";
         //set the data field to display
-        lstStockList.DataTextField = "EventNo";
+        lstStockList.DataTextField = "EventId";
         //bind the data to the list
         lstStockList.DataBind();
     }

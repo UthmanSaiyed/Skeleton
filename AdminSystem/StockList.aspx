@@ -12,7 +12,7 @@
         </div>
         <asp:ListBox ID="lstStockList" runat="server" Height="409px" Width="554px"></asp:ListBox>
         <p>
-            <asp:Button ID="btnAdd" runat="server" Text="Add" />
+            <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         </p>
         <p>
