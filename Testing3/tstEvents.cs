@@ -166,7 +166,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the DateAdded property
-            if (AnEvent.DateAdded != Convert.ToDateTime("23/12/2024"))
+            if (AnEvent.DateAdded != Convert.ToDateTime("24/12/2024"))
             {
                 OK = false;
             }
@@ -192,7 +192,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the Time property
-            if (AnEvent.Time != "10:00")
+            if (AnEvent.Time != "23:00")
             {
                 OK = false;
             }
@@ -218,7 +218,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the Location property
-            if (AnEvent.Location != "Uthman's BackYard")
+            if (AnEvent.Location != "24 Fake Street")
             {
                 OK = false;
             }
@@ -244,7 +244,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the Title property
-            if (AnEvent.Title != "Event Title")
+            if (AnEvent.Title != "Macharia's Event")
             {
                 OK = false;
             }
@@ -270,7 +270,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the Description property
-            if (AnEvent.Description != "Event Description")
+            if (AnEvent.Description != "Macharia's awesome event. bring juice.")
             {
                 OK = false;
             }
@@ -296,7 +296,7 @@ namespace Testing3
             found = AnEvent.Find(EventsID);
 
             // Check the Active property
-            if (AnEvent.Active != true)
+            if (AnEvent.Active != false)
             {
                 OK = false;
             }

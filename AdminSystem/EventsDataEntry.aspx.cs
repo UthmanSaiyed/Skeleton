@@ -54,4 +54,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("EventsViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsEvents AnEvent = new clsEvents();
+        Int32 EventID;
+        bool Found = false;
+        EventID = Convert.ToInt32(txtEventsID.Text);
+        Found = AnEvent.Find(EventID);
+        if (Found == true)
+        {
+            txtTitle.Text = AnEvent.Title;
+            txtLocation.Text = AnEvent.Location;
+            txtDate.Text = AnEvent.DateAdded.ToShortDateString();
+            txtTime.Text = AnEvent.Time;
+            txtDescription.Text = AnEvent.Description;
+            chkActive.Checked = AnEvent.Active;
+        }
+    }
 }

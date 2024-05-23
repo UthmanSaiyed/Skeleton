@@ -19,6 +19,7 @@
         </p>
         <p>
             <asp:Label ID="lblLocation" runat="server" style="z-index: 1; left: 13px; top: 152px; position: absolute" Text="Location" width="69px"></asp:Label>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 290px; top: 116px; position: absolute" Text="Find" width="60px" />
         </p>
         <p>
             <asp:Label ID="lblTitle" runat="server" style="z-index: 1; left: 13px; top: 115px; position: absolute; width: 69px" Text="Title"></asp:Label>
