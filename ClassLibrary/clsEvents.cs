@@ -59,15 +59,25 @@ namespace ClassLibrary
         // Find Method for EventsID
         public bool Find(int EventsID)
         {
-            // Simulate finding an event by setting the private data members to test data values
-            mEventID = 1;
-            mDateAdded = Convert.ToDateTime("23/12/2024");
-            mTime = "10:00";
-            mLocation = "Uthman's BackYard";
-            mTitle = "Event Title";
-            mDescription = "Event Description";
-            mActive = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@EventsID", EventsID);
+            DB.Execute("sproc_tblEvents_FilterByEventID");
+            if (DB.Count == 1)
+            {
+                // Simulate finding an event by setting the private data members to test data values
+                mEventID = Convert.ToInt32(DB.DataTable.Rows[0]["EventsID"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
+                mTime = Convert.ToString(DB.DataTable.Rows[0]["Time"]);
+                mLocation = Convert.ToString(DB.DataTable.Rows[0]["Location"]);
+                mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
+                mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                return true;
+            }
+            else 
+            { 
+             return false;
+            }
         }
     }
 }
