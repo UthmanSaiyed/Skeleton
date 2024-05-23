@@ -121,7 +121,7 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Delete");
         }
-        /*public void ReportBySupplier(string Supplier)
+        public void ReportBySupplier(string Supplier)
         {
             //filters the records based on a 
             //connects to the database
@@ -162,6 +162,6 @@ namespace ClassLibrary
                 //points at the next record
                 Index++;
             }
-        }*/
+        }
     }
 }

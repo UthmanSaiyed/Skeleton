@@ -14,7 +14,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the Stock to be processed
-        TicketId = Convert.ToInt32(Session["TicketId"]);
+        TicketId = Convert.ToInt32(Session["TicketId"] ?? "-1");
         if (IsPostBack == false)
         {
             //if this is not a new record
@@ -36,11 +36,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the price
         string Price = txtPrice.Text;
         //capture the supplier
-        string Supplier = txtPrice.Text;  
+        string Supplier = txtSupplier.Text;  
         //capture the ticketname
         string TicketName = txtTicketName.Text;
         //capture InStock checkbox
-        string Active = chkInStock.Text;
+        bool InStock = chkInStock.Checked;
         //variable to store any error messages
         string Error = "";
         //validate the data
