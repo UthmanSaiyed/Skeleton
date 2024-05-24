@@ -10,7 +10,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
     //variable to store the primary key value of the record to be deleted
     Int32 TicketId;
-   /* protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the stock to be deleted from the session object
         TicketId = Convert.ToInt32(Session["TicketId"]);
@@ -27,8 +27,10 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //create a new instance of the stock collection class
         clsStockCollection Stock = new clsStockCollection();
         //find the record to delete
+        Stock.ThisStock.Find(TicketId);
+        //delete the record
         Stock.Delete();
         //redirect back to the main page
         Response.Redirect("StockList.aspx");
-    }*/
+    }
 }
