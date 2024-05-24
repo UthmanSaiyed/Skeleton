@@ -208,5 +208,33 @@ namespace Testing6
             //test to see that the two values are the same
             Assert.AreEqual(0, FilteredStock.Count);
         }
+        [TestMethod]
+        public void ReportBySupplierTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //variable to store the collection
+            Boolean OK = true;
+            //apply a supplier that doesn't exist
+            FilteredStock.ReportBySupplier("yyy yyy");
+            //check that the correct number of records was found
+            if (FilteredStock.Count == 2)
+            {
+                if (FilteredStock.StockList[0].TicketId != 25)
+                {
+                    OK = false;
+                }
+                if (FilteredStock.StockList[1].TicketId != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);  
+        }
     }
 }
