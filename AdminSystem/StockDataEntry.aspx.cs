@@ -48,7 +48,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //captures the ticketid
-            AStock.TicketId = TicketId; 
+            AStock.TicketId = Convert.ToInt32(TicketId); 
             //capture the eventid
             AStock.EventId = Convert.ToInt32(EventId);
             //capture the quantity
