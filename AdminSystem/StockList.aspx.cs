@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -76,5 +77,39 @@ public partial class _1_List : System.Web.UI.Page
             //display an error message
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+    protected void btnFilterApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object 
+        clsStockCollection AStock = new clsStockCollection();
+        //retrieve the value of supplier from the presentation layer
+        AStock.ReportBySupplier(txtFilter.Text);
+        //set the data source to the list of stock in the collection
+        lstStockList.DataSource = AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "TicketId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "Supplier";
+        //bind the data to the list
+        lstStockList.DataBind();
+    }
+
+    protected void btnFilterClr_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection AStock = new clsStockCollection();
+        //set an empty string
+        AStock.ReportBySupplier("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of stock in the collection
+        lstStockList.DataSource = AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "TicketId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "Supplier";
+        //bind the data to the display
+        lstStockList.DataBind();
     }
 }
