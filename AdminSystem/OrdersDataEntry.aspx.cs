@@ -39,11 +39,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderStatus = OrderStatus;
             AnOrder.IsPaid = IsPaid;
 
-            // Store the order in the session object
-            Session["AnOrder"] = AnOrder;
-
-            // Navigate to the view page
-            Response.Redirect("OrdersViewer.aspx");
+            // Create an instance of the orders collection
+            clsOrdersCollection OrdersList = new clsOrdersCollection();
+            // Set the ThisOrder property
+            OrdersList.ThisOrder = AnOrder;
+            // Add the new record
+            OrdersList.Add();
+            // Redirect back to the list page
+            Response.Redirect("OrdersList.aspx");
         }
         else
         {

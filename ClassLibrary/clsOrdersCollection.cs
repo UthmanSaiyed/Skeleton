@@ -5,59 +5,74 @@ namespace ClassLibrary
 {
     public class clsOrdersCollection
     {
-        // private data member for the list
+        // Private data member for the list
         List<clsOrders> mOrdersList = new List<clsOrders>();
+        // Private member data for ThisOrder
+        clsOrders mThisOrder = new clsOrders();
 
-        // public property for the orders list
+        // Public property for the orders list
         public List<clsOrders> OrdersList
         {
             get
             {
-                // return the private data
+                // Return the private data
                 return mOrdersList;
             }
             set
             {
-                // set the private data
+                // Set the private data
                 mOrdersList = value;
             }
         }
 
-        // public property for the count
+        // Public property for the count
         public int Count
         {
             get
             {
-                // return the count of the list
+                // Return the count of the list
                 return mOrdersList.Count;
             }
             set
             {
-                // we shall worry about this later
+                // We shall worry about this later
             }
         }
 
-        public clsOrders ThisOrder { get; set; }
+        // Public property for ThisOrder
+        public clsOrders ThisOrder
+        {
+            get
+            {
+                // Return the private data 
+                return mThisOrder;
+            }
+            set
+            {
+                // Set the private data
+                mThisOrder = value;
+            }
+        }
 
-        // constructor for the class
+        // Constructor for the class
         public clsOrdersCollection()
         {
-            // variable for the index
+            // Variable for the index
             Int32 Index = 0;
-            // variable to store the record count
+            // Variable to store the record count
             Int32 RecordCount = 0;
-            // object for the data connection
+            // Object for the data connection
             clsDataConnection DB = new clsDataConnection();
-            // execute the stored procedure
+            // Execute the stored procedure
             DB.Execute("sproc_tblOrder_SelectAll");
-            // get the count of records
+            // Get the count of records
             RecordCount = DB.Count;
-            // while there are records to process
+            // While there are records to process
             while (Index < RecordCount)
             {
-                // create a blank order
+                // Create a blank order
                 clsOrders AnOrder = new clsOrders();
-                // read in the fields for the current record
+                // Read in the fields for the current record
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
                 AnOrder.TicketID = Convert.ToString(DB.DataTable.Rows[Index]["TicketID"]);
                 AnOrder.CustomerID = Convert.ToString(DB.DataTable.Rows[Index]["CustomerID"]);
@@ -65,11 +80,27 @@ namespace ClassLibrary
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
                 AnOrder.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
-                // add the record to the private data member
+                // Add the record to the private data member
                 mOrdersList.Add(AnOrder);
-                // point at the next record
+                // Point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            // Adds a record to the database based on the values of mThisOrder
+            // Connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            // Set the parameters for the stored procedure
+            DB.AddParameter("@TicketID", mThisOrder.TicketID);
+            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@IsPaid", mThisOrder.IsPaid);
+            DB.AddParameter("@TotalAmount", mThisOrder.TotalAmount);
+            // Execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
         }
     }
 }
