@@ -29,12 +29,12 @@ namespace Testing6
             clsStock TestItem = new clsStock();
             //set its properties
             TestItem.InStock = true;
-            TestItem.TicketId = 5;
-            TestItem.EventId = 101;
-            TestItem.Quantity = 1001;
-            TestItem.Price = 4999.99M;
-            TestItem.Supplier = "Canada";
-            TestItem.TicketName = "2026 World Cup Final";
+            TestItem.TicketId = 4;
+            TestItem.EventId = 97;
+            TestItem.Quantity = 1000;
+            TestItem.Price = 149.99M;
+            TestItem.Supplier = "Rolling Loud";
+            TestItem.TicketName = "Kanye West Set";
             //add the items to the test list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -51,12 +51,12 @@ namespace Testing6
             clsStock TestStock = new clsStock();
             //set the properties of the test object
             TestStock.InStock = true;
-            TestStock.TicketId = 5;
-            TestStock.EventId = 101;
-            TestStock.Quantity = 1001;
-            TestStock.Price = 4999.99M;
-            TestStock.Supplier = "Canada";
-            TestStock.TicketName = "2026 World Cup Final";
+            TestStock.TicketId = 4;
+            TestStock.EventId = 97;
+            TestStock.Quantity = 1000;
+            TestStock.Price = 149.99M;
+            TestStock.Supplier = "Rolling Loud";
+            TestStock.TicketName = "Kanye West Set";
             //assign the data to the property
             AllStock.ThisStock = TestStock;
             //test to see that the two values are the same
@@ -75,12 +75,12 @@ namespace Testing6
             clsStock TestItem = new clsStock();
             //set its properties
             TestItem.InStock = true;
-            TestItem.TicketId = 5;
-            TestItem.EventId = 101;
-            TestItem.Quantity = 1001;
-            TestItem.Price = 4999.99M;
-            TestItem.Supplier = "Canada";
-            TestItem.TicketName = "2026 World Cup Final";
+            TestItem.TicketId = 4;
+            TestItem.EventId = 97;
+            TestItem.Quantity = 100;
+            TestItem.Price = 149.99M;
+            TestItem.Supplier = "Rolling Loud";
+            TestItem.TicketName = "Kanye West Set";
             //add the items to the test list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -164,8 +164,8 @@ namespace Testing6
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.Active = true;
-            TestItem.TicketId = 6;
+            TestItem.InStock = true;
+            TestItem.TicketId = 1036;
             TestItem.EventId = 1001;
             TestItem.Quantity = 1001;
             TestItem.Price = 3499.99M;
@@ -220,11 +220,11 @@ namespace Testing6
             //check that the correct number of records was found
             if (FilteredStock.Count == 2)
             {
-                if (FilteredStock.StockList[0].TicketId != 25)
+                if (FilteredStock.StockList[0].TicketId != 1041)
                 {
                     OK = false;
                 }
-                if (FilteredStock.StockList[1].TicketId != 26)
+                if (FilteredStock.StockList[1].TicketId != 1042)
                 {
                     OK = false;
                 }
