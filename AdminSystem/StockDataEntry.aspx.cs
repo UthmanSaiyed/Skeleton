@@ -145,4 +145,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtTicketName.Text = Stock.ThisStock.TicketName;
         chkInStock.Checked = Stock.ThisStock.InStock;
     }
+
+    protected void btnReturnMM_Click(object sender, EventArgs e)
+    {
+        //redirect to the team main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the stock list page
+        Response.Redirect("StockList.aspx");
+    }
 }
