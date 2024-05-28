@@ -25,10 +25,10 @@
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 162px; top: 194px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtTicketName" runat="server" style="z-index: 1; top: 291px; position: absolute; left: 162px"></asp:TextBox>
         <asp:CheckBox ID="chkInStock" runat="server" style="z-index: 1; left: 162px; top: 352px; position: absolute; right: 921px" Text="InStock" />
-        <asp:Button ID="Button1" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 55px; top: 503px; position: absolute; right: 762px;" Text="OK" width="60px" />
+        <asp:Button ID="Button1" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 55px; top: 503px; position: absolute; right: 2643px; width: 70px;" Text="OK" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 402px; top: 74px; position: absolute" Text="Find" width="60px" />
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 176px; top: 503px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; left: 176px; top: 503px; position: absolute" Text="Cancel" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 34px; top: 432px; position: absolute" Text="[lblError]" width="55px"></asp:Label>
@@ -37,6 +37,15 @@
             &nbsp;</p>
         <p>
             &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnReturnMM" runat="server" style="z-index: 1; left: 346px; top: 503px; position: absolute; width: 292px;" Text="Return to Main Menu" OnClick="btnReturnMM_Click" />
+        </p>
         <p>
             &nbsp;</p>
     </form>

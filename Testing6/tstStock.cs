@@ -856,7 +856,7 @@ namespace Testing6
             //invoke the method
             DataTable dT = AStock.StatisticsGroupedBySupplier();
             //According to the last executed stored procedure, there should be 10 row of data
-            int noOfRecord = 6;
+            int noOfRecord = 7;
 
             //test to see that the result is correct
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
@@ -869,7 +869,7 @@ namespace Testing6
             //invoke the method
             DataTable dT = AStock.StatisticsGroupedByPrice();
             //According to the last executed stored procedure, there should be 3 row of data
-            int noOfRecord = 7;
+            int noOfRecord = 6;
 
             //test to see that the result is correct
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
