@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -43,23 +42,44 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
-        // variable to store the primary key value of the record to be edited
+        // Variable to store the primary key value of the record to be edited
         Int32 OrderID;
-        // if a record has been selected from the list
+        // If a record has been selected from the list
         if (lstOrdersList.SelectedIndex != -1)
         {
-            // get the primary key value of the record to edit
+            // Get the primary key value of the record to edit
             OrderID = Convert.ToInt32(lstOrdersList.SelectedValue);
-            // store the data in the session object
+            // Store the data in the session object
             Session["OrderID"] = OrderID;
-            // redirect to the edit page
+            // Redirect to the edit page
             Response.Redirect("OrdersDataEntry.aspx");
         }
-        // if no record has been selected
-        else
+        else // If no record has been selected
         {
-            // display an error
+            // Display an error message
             lblError.Text = "Please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        // Variable to store the primary key value of the record to be deleted
+        Int32 OrderID;
+        // If a record has been selected from the list
+        if (lstOrdersList.SelectedIndex != -1)
+        {
+            // Get the primary key value of the record to delete
+            OrderID = Convert.ToInt32(lstOrdersList.SelectedValue);
+            // Store the data in the session object
+            Session["OrderID"] = OrderID;
+            // Redirect to the delete page
+            Response.Redirect("OrdersConfirmDelete.aspx");
+        }
+        else // If no record has been selected
+        {
+            // Display an error message
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }
+
