@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Security.Cryptography.X509Certificates;
 
 
@@ -215,6 +216,25 @@ namespace ClassLibrary
             //return any error message
             return Error;
         }
-    }
+        public DataTable StatisticsGroupedBySupplier()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
 
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Count_GroupBySupplier");
+            //There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+        public DataTable StatisticsGroupedByPrice()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Count_GroupByPrice");
+            //There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+    }
 }

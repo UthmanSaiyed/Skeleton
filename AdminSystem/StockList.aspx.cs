@@ -112,4 +112,10 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the display
         lstStockList.DataBind();
     }
+
+    protected void btnStatistics_Click(object sender, EventArgs e)
+    {
+        //redirect to the edit page
+        Response.Redirect("StockStatistics.aspx");
+    }
 }
