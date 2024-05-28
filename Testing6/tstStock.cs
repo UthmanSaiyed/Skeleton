@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
+using System.Data;
 
 namespace Testing6
 {
@@ -846,6 +847,32 @@ namespace Testing6
             Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StatStatisticsGroupedBySupplier()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //invoke the method
+            DataTable dT = AStock.StatisticsGroupedBySupplier();
+            //According to the last executed stored procedure, there should be 10 row of data
+            int noOfRecord = 6;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+        [TestMethod]
+        public void StatStatisticsGroupedByPrice()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //invoke the method
+            DataTable dT = AStock.StatisticsGroupedByPrice();
+            //According to the last executed stored procedure, there should be 3 row of data
+            int noOfRecord = 7;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
     }
 }
