@@ -1,4 +1,5 @@
-﻿namespace ClassLibrary
+﻿
+namespace ClassLibrary
 {
     public class clsStaff
     {

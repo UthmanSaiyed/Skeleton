@@ -1,6 +1,5 @@
-﻿using ClassLibrary;
+﻿using ClassLibrary; // Ensure this namespace is correct
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Testing5
 {
@@ -10,10 +9,11 @@ namespace Testing5
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
+            // Create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
-            //test to see that it exists
+            // Test to see that it exists
             Assert.IsNotNull(AStaff);
         }
     }
 }
+
