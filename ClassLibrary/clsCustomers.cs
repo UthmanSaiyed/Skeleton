@@ -55,17 +55,17 @@ namespace ClassLibrary
             }
         }
 
-        private DateTime mBirthDate;
-        public DateTime BirthDate
+        private DateTime mDate;
+        public DateTime Date
 
         {
             get
             {
-                return mBirthDate;
+                return mDate;
             }
             set
             {
-                mBirthDate = value;
+                mDate = value;
             }
         }
 
@@ -127,7 +127,7 @@ namespace ClassLibrary
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BirthDate"]);
+                mDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
                 mPhonenumber = Convert.ToString(DB.DataTable.Rows[0]["Phonenumber"]);
                 mNewsletter = Convert.ToBoolean(DB.DataTable.Rows[0]["Newsletter"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
@@ -141,7 +141,69 @@ namespace ClassLibrary
                 return false;
             }
         }
-    }
-}
+
+        public string Valid(string name, string email, string date, string phonenumber)
+        {
+            //create a string vqriable to store error
+            String Error = "";
+
+            DateTime Date;
+            //if th name is blank
+
+            if (name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The name should not be blank: ";
+            }
+            //return any error messages
             
+
+            if (email.Length > 256)
+            {
+                //record the error
+                Error = Error + "The email should be less than 256 characters: ";
+            }
+
+            try
+            {
+                //copy the OrderDate value to the DateTemp variable
+                Date = Convert.ToDateTime(date);
+                if (Date < DateTime.Now.Date.AddYears(-100))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be more than 100 years in the past : ";
+                }
+                if (Date > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error 
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            if (phonenumber.Length < 11) 
+            {
+                Error = Error + "Phone number must be 11 digits";
+
+            }
+            if(phonenumber.Length > 11)
+            {
+                Error = Error + "Phone number must be 11 digits";
+            }
+
+            
+            
+
+
+            //return any error messages
+            //needs to be at end
+            return Error;
+        }
+    }
     
+}
+
