@@ -29,8 +29,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture email
         ACustomer.Email = txtEmail.Text;
 
-        //capture birthdate
-        ACustomer.BirthDate = Convert.ToDateTime(txtBirthDate.Text);
+        //capture date
+        ACustomer.Date = Convert.ToDateTime(txtDate.Text);
 
         //capture phonenumber
         ACustomer.Phonenumber = txtPhonenumber.Text;
@@ -65,7 +65,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerID.Text = ACustomer.CustomerID.ToString();
             txtName.Text = ACustomer.Name;
             txtEmail.Text = ACustomer.Email;
-            txtBirthDate.Text = ACustomer.BirthDate.ToString();
+            txtDate.Text = ACustomer.Date.ToString();
             txtPhonenumber.Text = ACustomer.Phonenumber;
             cbNewsletter.Checked = ACustomer.Newsletter;
             cbActive.Checked = ACustomer.Active;

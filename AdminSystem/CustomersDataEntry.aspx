@@ -24,8 +24,8 @@
         <p>
             <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 208px; top: 168px; position: absolute"></asp:TextBox>
         </p>
-        <asp:Label ID="lblBirthDate" runat="server" style="z-index: 1; left: 98px; top: 208px; position: absolute" Text="Birth Date" width="109px"></asp:Label>
-        <asp:TextBox ID="txtBirthDate" runat="server" style="z-index: 1; left: 208px; top: 207px; position: absolute"></asp:TextBox>
+        <asp:Label ID="lblDate" runat="server" style="z-index: 1; left: 98px; top: 208px; position: absolute" Text="Date" width="109px"></asp:Label>
+        <asp:TextBox ID="txtDate" runat="server" style="z-index: 1; left: 208px; top: 207px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPhoneNumber" runat="server" style="z-index: 1; left: 98px; top: 245px; position: absolute; width: 109px; right: 930px;" Text="Phone Number"></asp:Label>
         <asp:TextBox ID="txtPhonenumber" runat="server" style="z-index: 1; left: 208px; top: 245px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblNewsletter" runat="server" style="z-index: 1; left: 98px; top: 275px; position: absolute" Text="Newsletter" width="109px"></asp:Label>
