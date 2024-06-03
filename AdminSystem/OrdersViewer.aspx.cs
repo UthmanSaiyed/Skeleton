@@ -13,10 +13,10 @@ public partial class _1Viewer : System.Web.UI.Page
             clsOrders AnOrder = (clsOrders)Session["AnOrder"];
 
             // Display the Ticket ID for this entry
-            Response.Write("Ticket ID: " + AnOrder.TicketID + "<br/>");
+            Response.Write("Promo Code: " + AnOrder.PromoCode + "<br/>");
 
             // Display the Customer ID
-            Response.Write("Customer ID: " + AnOrder.CustomerID + "<br/>");
+            Response.Write("Order Feedback: " + AnOrder.OrderFeedback + "<br/>");
 
             // Display the Order Status
             Response.Write("Order Status: " + AnOrder.OrderStatus + "<br/>");

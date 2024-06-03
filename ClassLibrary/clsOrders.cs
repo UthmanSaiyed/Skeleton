@@ -22,36 +22,36 @@ namespace ClassLibrary
         }
 
         //private data member for the TicketID property
-        private string mTicketID;
+        private string mPromoCode;
         //TicketID public property
-        public string TicketID
+        public string PromoCode
         {
             get
             {
                 //this line of code sends data out of the property
-                return mTicketID;
+                return mPromoCode;
             }
             set
             {
                 //this line of code allows data into the property
-                mTicketID = value;
+                mPromoCode = value;
             }
         }
 
         //private data member for the CustomerID property
-        private string mCustomerID;
+        private string mOrderFeedback;
         //CustomerID public property
-        public string CustomerID
+        public string OrderFeedback
         {
             get
             {
                 //this line of code sends data out of the property
-                return mCustomerID;
+                return mOrderFeedback;
             }
             set
             {
                 //this line of code allows data into the property
-                mCustomerID = value;
+                mOrderFeedback = value;
             }
         }
 
@@ -137,8 +137,8 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                mTicketID = Convert.ToString(DB.DataTable.Rows[0]["TicketID"]);
-                mCustomerID = Convert.ToString(DB.DataTable.Rows[0]["CustomerID"]);
+                mPromoCode = Convert.ToString(DB.DataTable.Rows[0]["PromoCode"]);
+                mOrderFeedback = Convert.ToString(DB.DataTable.Rows[0]["OrderFeedback"]);
                 mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mIsPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["IsPaid"]);
@@ -154,7 +154,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string ticketID, string customerID, string orderDate, string totalAmount)
+        public string Valid(string promoCode, string orderFeedback, string orderDate, string totalAmount)
         {
             //create a string variable to store the error
             String Error = "";
@@ -163,29 +163,29 @@ namespace ClassLibrary
             DateTime DateTemp;
 
             //if the TicketID is blank
-            if (ticketID.Length == 0)
+            if (promoCode.Length == 0)
             {
                 //record the error
-                Error = Error + "The Ticket ID may not be blank : ";
+                Error = Error + "The Promo Code may be blank : ";
             }
             //if the TicketID is greater than 6 characters
-            if (ticketID.Length > 6)
+            if (promoCode.Length > 6)
             {
                 //record the error 
-                Error = Error + "The Ticket ID must be less than 6 characters : ";
+                Error = Error + "The Promo Code must be less than 6 characters : ";
             }
 
             //if the CustomerID is blank
-            if (customerID.Length == 0)
+            if (orderFeedback.Length == 0)
             {
                 //record the error
-                Error = Error + "The Customer ID may not be blank : ";
+                Error = Error + "The Order Feedback may be blank : ";
             }
             //if the CustomerID is greater than 6 characters
-            if (customerID.Length > 6)
+            if (orderFeedback.Length > 6)
             {
                 //record the error 
-                Error = Error + "The Customer ID must be less than 6 characters : ";
+                Error = Error + "The Order Feedback must be less than 6 characters : ";
             }
 
             //validate the OrderDate

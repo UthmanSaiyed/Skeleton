@@ -34,8 +34,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Orders.ThisOrder.Find(OrderID);
         // Display the data for the record
         txtOrderID.Text = Orders.ThisOrder.OrderID.ToString();
-        txtTicketID.Text = Orders.ThisOrder.TicketID;
-        txtCustomerID.Text = Orders.ThisOrder.CustomerID;
+        txtPromoCode.Text = Orders.ThisOrder.PromoCode;
+        txtOrderFeedback.Text = Orders.ThisOrder.OrderFeedback;
         txtOrderDate.Text = Orders.ThisOrder.OrderDate.ToString("yyyy-MM-dd");
         txtTotalAmount.Text = Orders.ThisOrder.TotalAmount.ToString();
         chkOrderStatus.Checked = Orders.ThisOrder.OrderStatus == "Active";
@@ -48,8 +48,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrders AnOrder = new clsOrders();
 
         // Capture the input data
-        string TicketID = txtTicketID.Text;
-        string CustomerID = txtCustomerID.Text;
+        string PromoCode = txtPromoCode.Text;
+        string OrderFeedback = txtOrderFeedback.Text;
         string OrderDate = txtOrderDate.Text;
         string TotalAmount = txtTotalAmount.Text;
         string OrderStatus = chkOrderStatus.Checked ? "Active" : "Not Active";
@@ -59,7 +59,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
 
         // Validate the data
-        Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+        Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
 
         // If there are no errors
         if (Error == "")
@@ -68,8 +68,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderID = OrderID; // DON'T MISS THIS BIT !!!!!
 
             // Capture the data
-            AnOrder.TicketID = TicketID;
-            AnOrder.CustomerID = CustomerID;
+            AnOrder.PromoCode = PromoCode;
+            AnOrder.OrderFeedback = OrderFeedback;
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             AnOrder.TotalAmount = Convert.ToDecimal(TotalAmount);
             AnOrder.OrderStatus = OrderStatus;
@@ -125,8 +125,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (Found == true)
             {
                 // Display the values of the properties in the form
-                txtTicketID.Text = AnOrder.TicketID;
-                txtCustomerID.Text = AnOrder.CustomerID;
+                txtPromoCode.Text = AnOrder.PromoCode;
+                txtOrderFeedback.Text = AnOrder.OrderFeedback;
                 chkOrderStatus.Checked = AnOrder.OrderStatus == "Active";
                 txtOrderDate.Text = AnOrder.OrderDate.ToString("yyyy-MM-dd");
                 chkIsPaid.Checked = AnOrder.IsPaid;
