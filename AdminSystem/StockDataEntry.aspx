@@ -13,13 +13,13 @@
             <asp:Label ID="lblTicketName" runat="server" style="z-index: 1; left: 34px; top: 293px; position: absolute; width: 98px" Text="Ticket Name"></asp:Label>
         </div>
         <asp:Label ID="lblTicketId" runat="server" style="z-index: 1; left: 34px; top: 71px; position: absolute" Text="Ticket Id"></asp:Label>
-        <asp:Label ID="lblEventId" runat="server" style="z-index: 1; left: 32px; top: 100px; position: absolute" Text="Event Id" width="55px"></asp:Label>
+        <asp:Label ID="lblSKU" runat="server" style="z-index: 1; left: 32px; top: 100px; position: absolute" Text="SKU" width="55px"></asp:Label>
         <asp:Label ID="lblQuantity" runat="server" style="z-index: 1; left: 34px; top: 157px; position: absolute" Text="Quantity" width="55px"></asp:Label>
         <p>
             <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 34px; top: 196px; position: absolute" Text="Price" width="55px"></asp:Label>
         </p>
         <asp:TextBox ID="txtTicketId" runat="server" style="z-index: 1; left: 162px; top: 70px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtEventId" runat="server" style="z-index: 1; left: 162px; top: 113px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtSKU" runat="server" style="z-index: 1; left: 162px; top: 113px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 162px; top: 154px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtSupplier" runat="server" style="z-index: 1; left: 162px; top: 242px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 162px; top: 194px; position: absolute"></asp:TextBox>

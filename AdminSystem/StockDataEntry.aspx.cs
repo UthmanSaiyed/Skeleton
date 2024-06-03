@@ -30,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Create a new instance of clsStock
         clsStock AStock = new clsStock();
         //capture the eventid
-        string EventId = txtEventId.Text;
+        string SKU = txtSKU.Text;
         //capture the quantity
         string Quantity = txtQuantity.Text;
         //capture the price
@@ -44,13 +44,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AStock.Valid(EventId,Quantity, Price, Supplier, TicketName);
+        Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
         if (Error == "")
         {
             //captures the ticketid
             AStock.TicketId = Convert.ToInt32(TicketId); 
             //capture the eventid
-            AStock.EventId = Convert.ToInt32(EventId);
+            AStock.SKU = SKU;
             //capture the quantity
             AStock.Quantity = Convert.ToInt32(Quantity);
             //capture the price
@@ -111,7 +111,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //display the values of the properties in the form
                 txtTicketId.Text = AStock.TicketId.ToString();
-                txtEventId.Text = AStock.EventId.ToString();
+                txtSKU.Text = AStock.SKU.ToString();
                 txtQuantity.Text = AStock.Quantity.ToString();
                 txtPrice.Text = AStock.Price.ToString();
                 txtSupplier.Text = AStock.Supplier;
@@ -138,7 +138,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Stock.ThisStock.Find(TicketId);
         //display the data for the record
         txtTicketId.Text = Stock.ThisStock.TicketId.ToString();
-        txtEventId.Text = Stock.ThisStock.EventId.ToString();
+        txtSKU.Text = Stock.ThisStock.SKU.ToString();
         txtQuantity.Text = Stock.ThisStock.Quantity.ToString();
         txtPrice.Text = Stock.ThisStock.Price.ToString();
         txtSupplier.Text = Stock.ThisStock.Supplier;

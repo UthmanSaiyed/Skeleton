@@ -11,7 +11,7 @@ namespace Testing6
     {
         //good test data
         //create some test data to pass the method
-        string EventId = "101";
+        string SKU = "101";
         string Quantity = "1001";
         string Price = "4999.99";
         string Supplier = "Canada";
@@ -38,16 +38,16 @@ namespace Testing6
             Assert.AreEqual(AStock.TicketId, TestData);
         }
         [TestMethod]
-        public void EventIdPropertyOK()
+        public void SKUPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            string TestData = "1";
             //assign the data to the property
-            AStock.EventId = TestData;
+            AStock.SKU = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.EventId, TestData);
+            Assert.AreEqual(AStock.SKU, TestData);
         }
         [TestMethod]
         public void QuantityPropertyOK()
@@ -146,7 +146,7 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void TestEventIdFound()
+        public void TestSKUFound()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -159,7 +159,7 @@ namespace Testing6
             //invoke the method
             Found = AStock.Find(TicketId);
             //check the ticket id property
-            if (AStock.EventId != 101)
+            if (AStock.SKU != "101")
             {
                 OK = false;
             }
@@ -284,119 +284,119 @@ namespace Testing6
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMinLessOne()
+        public void SKUMinLessOne()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = ""; //this should trigger an error
+            string SKU = ""; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMin()
+        public void SKUMin()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "1"; //this should trigger an error
+            string SKU = "1"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMinPlusOne()
+        public void SKUMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "11"; //this should trigger an error
+            string SKU = "11"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMaxlessOne()
+        public void SKUMaxlessOne()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "1111"; //this should trigger an error
+            string SKU = "1111"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMax()
+        public void SKUMax()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "11111"; //this should trigger an error
+            string SKU = "11111"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMid()
+        public void SKUMid()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "111"; //this should trigger an error
+            string SKU = "111"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdMaxPlusOne()
+        public void SKUMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            string EventId = "1111111"; //this should trigger an error
+            string SKU = "1111111"; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EventIdExtremeMax()
+        public void SKUExtremeMax()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //string variable to store any error messages
             String Error = "";
             //create some test data to pass to the method
-            EventId = EventId.PadRight(500, '1'); //this should fail
+            SKU = SKU.PadRight(500, '1'); //this should fail
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -410,7 +410,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = ""; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -424,7 +424,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "1"; //this should trigger an error
                                   //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -438,7 +438,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "11"; //this should trigger an error
                                    //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -452,7 +452,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "11111"; //this should trigger an error
                                      //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -466,7 +466,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "111111"; //this should trigger an error
                                       //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -480,7 +480,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "111"; //this should trigger an error
                                     //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -494,7 +494,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Quantity = "1111111"; //this should trigger an error
                                         //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -508,7 +508,7 @@ namespace Testing6
             //create some test data to pass to the method
             Quantity = Quantity.PadRight(500, '1'); //this should fail
                                                   //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -521,7 +521,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = ""; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -535,7 +535,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = "1"; //this should trigger an error
                                    //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -549,7 +549,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = "11"; //this should trigger an error
                                     //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -563,7 +563,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = "11111"; //this should trigger an error
                                        //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -577,7 +577,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = "111111"; //this should trigger an error
                                         //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -591,7 +591,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = "111"; //this should trigger an error
                                      //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -605,7 +605,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Price = ""; //this should trigger an error
             Price = Price.PadRight(8, '1');                      //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -620,7 +620,7 @@ namespace Testing6
             string Price = "";
             Price = Price.PadRight(500, '1'); //this should fail
                                                     //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -633,7 +633,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = ""; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -647,7 +647,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "a"; //this should trigger an error
                                 //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -661,7 +661,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "aa"; //this should trigger an error
                                  //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -675,7 +675,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "";
             Supplier = Supplier.PadRight(49, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -689,7 +689,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "";
             Supplier = Supplier.PadRight(50, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -703,7 +703,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "";
             Supplier = Supplier.PadRight(25, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -717,7 +717,7 @@ namespace Testing6
             //create some test data to pass to the method
             string Supplier = "";
             Supplier = Supplier.PadRight(51, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -732,7 +732,7 @@ namespace Testing6
             string Supplier = "";
             Supplier = Supplier.PadRight(500, 'a'); //this should fail
                                               //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -745,7 +745,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = ""; //this should trigger an error
             //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -759,7 +759,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "a"; //this should trigger an error
                                    //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -773,7 +773,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "aa"; //this should trigger an error
                                     //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -787,7 +787,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "";
             TicketName = TicketName.PadRight(49, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -801,7 +801,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "";
             TicketName = TicketName.PadRight(50, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -815,7 +815,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "";
             TicketName = TicketName.PadRight(25, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -829,7 +829,7 @@ namespace Testing6
             //create some test data to pass to the method
             string TicketName = "";
             TicketName = TicketName.PadRight(51, 'a');
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -844,7 +844,7 @@ namespace Testing6
             string TicketName = "";
             TicketName = TicketName.PadRight(500, 'a'); //this should fail
                                                     //invoke the method
-            Error = AStock.Valid(EventId, Quantity, Price, Supplier, TicketName);
+            Error = AStock.Valid(SKU, Quantity, Price, Supplier, TicketName);
             //test to see the result is correct
             Assert.AreNotEqual(Error, "");
         }
