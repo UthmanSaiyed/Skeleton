@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ClassLibrary
 {
@@ -74,10 +75,124 @@ namespace ClassLibrary
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 return true;
             }
-            else 
-            { 
-             return false;
+            else
+            {
+                return false;
             }
         }
+
+        public string Valid(string Title, string Location, string DateAdded, string Time, string Description)
+        {
+            // Create a string variable to store the error
+            string Error = "";
+
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            // If the Title is blank
+            if (Title.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The title may not be blank : ";
+            }
+
+            // If the title character length is less than the min value or exceeds the max value
+            if (Title.Length < 1 || Title.Length > 50)
+            {
+                Error = Error + "The Title must be between 1 and 50 characters";
+            }
+
+            // Check for invalid characters in the Title
+            char[] invalidChars = { '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '{', '}', '[', ']', '|', '\\', ';', ':', '"', '<', '>', ',', '.', '?', '/', '~', '`' };
+            foreach (char invalidChar in invalidChars)
+            {
+                if (Title.Contains(invalidChar))
+                {
+                    Error = Error + "The Title contains invalid characters. ";
+                    break;
+                }
+            }
+
+            // Location validation
+
+            // If the Location is blank
+            if (Location.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The location field may not be blank : ";
+            }
+
+            if (Location.Length  < 1 || Location.Length > 100)
+            {
+                Error = Error + "The location field must be between 1 and 50 characters";
+            }
+
+            // Check for invalid characters in the Title
+           
+            foreach (char invalidChar in invalidChars)
+            {
+                if (Location.Contains(invalidChar))
+                {
+                    Error = Error + "The Location contains invalid characters. ";
+                    break;
+                }
+            }
+            try
+            {
+
+                //copy the dateAdded vlaue to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAdded);
+
+                //check to see if the date is less than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "the date cannot be in the past: ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+
+            // Location validation
+            // If the Time is blank
+            if (Time.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The Time field may not be blank : ";
+            }
+
+            //if the time is too long
+
+            if (Time.Length > 5 || Time.Length < 5)
+            {
+                // Record the error
+                Error = Error + "The Time field should be 5 characters long : ";
+            }
+            try
+            {
+                TimeSpan.Parse(Time);
+                // If the Time is blank
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "hi";
+            }
+
+            // If the Description character length is less than the min value or exceeds the max value
+            if (Description.Length < 1 || Description.Length > 1000)
+            {
+                Error = Error + "The Description must be between 1 and 50 characters";
+            }
+
+            //return any error messages
+            return Error;
+        }
+
+
+
     }
 }
