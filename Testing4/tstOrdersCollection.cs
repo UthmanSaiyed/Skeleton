@@ -30,8 +30,8 @@ namespace Testing4
             clsOrders TestItem = new clsOrders();
             //set its properties
             TestItem.OrderID = 11;
-            TestItem.TicketID = "101";
-            TestItem.CustomerID = "1001";
+            TestItem.PromoCode = "101";
+            TestItem.OrderFeedback = "Feedback 1001";
             TestItem.OrderDate = Convert.ToDateTime("10/05/2023");
             TestItem.IsPaid = true;
             TestItem.TotalAmount = 199.95M;
@@ -52,8 +52,8 @@ namespace Testing4
             clsOrders TestOrder = new clsOrders();
             //set the properties of the test object
             TestOrder.OrderID = 11;
-            TestOrder.TicketID = "101";
-            TestOrder.CustomerID = "1001";
+            TestOrder.PromoCode = "101";
+            TestOrder.OrderFeedback = "Feedback 1001";
             TestOrder.OrderStatus = "Active";
             TestOrder.OrderDate = Convert.ToDateTime("2023-05-10");
             TestOrder.IsPaid = true;
@@ -77,8 +77,8 @@ namespace Testing4
             clsOrders TestItem = new clsOrders();
             // set its properties
             TestItem.OrderID = 11;
-            TestItem.TicketID = "101";
-            TestItem.CustomerID = "1001";
+            TestItem.PromoCode = "101";
+            TestItem.OrderFeedback = "Feedback 1001";
             TestItem.OrderStatus = "Active";
             TestItem.OrderDate = Convert.ToDateTime("10/05/2023");
             TestItem.IsPaid = true;
@@ -102,8 +102,8 @@ namespace Testing4
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.OrderID = 11;
-            TestItem.TicketID = "101";
-            TestItem.CustomerID = "1001";
+            TestItem.PromoCode = "101";
+            TestItem.OrderFeedback = "Feedback 1001";
             TestItem.OrderStatus = "Active";
             TestItem.OrderDate = Convert.ToDateTime("10/05/2023");
             TestItem.IsPaid = true;
@@ -131,8 +131,8 @@ namespace Testing4
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.OrderID = 1;
-            TestItem.TicketID = "12345";
-            TestItem.CustomerID = "54321";
+            TestItem.PromoCode = "12345";
+            TestItem.OrderFeedback = "Feedback 54321";
             TestItem.OrderStatus = "Active";
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.IsPaid = true;
@@ -144,8 +144,8 @@ namespace Testing4
             //set the primary key of the test data
             TestItem.OrderID = PrimaryKey;
             //modify the test data
-            TestItem.TicketID = "54321";
-            TestItem.CustomerID = "12345";
+            TestItem.PromoCode = "54321";
+            TestItem.OrderFeedback = "Feedback 12345";
             TestItem.OrderStatus = "Inactive";
             TestItem.OrderDate = DateTime.Now.Date.AddDays(1);
             TestItem.IsPaid = false;
@@ -171,8 +171,8 @@ namespace Testing4
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.OrderID = 11;
-            TestItem.TicketID = "101";
-            TestItem.CustomerID = "1001";
+            TestItem.PromoCode = "101";
+            TestItem.OrderFeedback = "Feedback 1001";
             TestItem.OrderStatus = "Active";
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.IsPaid = true;

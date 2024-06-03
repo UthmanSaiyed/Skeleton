@@ -9,8 +9,8 @@ namespace Testing4
     {
         //good test data
         //create some test data to pass the method
-        string TicketID = "101";
-        string CustomerID = "1001";
+        string PromoCode = "101";
+        string OrderFeedback = "1001";
         string OrderDate = DateTime.Now.ToShortDateString();
         string TotalAmount = "199.95";
 
@@ -39,29 +39,29 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TicketIDPropertyOK()
+        public void PromoCodePropertyOK()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //create some test data to assign to the property
             string TestData = "101";
             //assign the data to the property
-            AnOrder.TicketID = TestData;
+            AnOrder.PromoCode = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.TicketID, TestData);
+            Assert.AreEqual(AnOrder.PromoCode, TestData);
         }
 
         [TestMethod]
-        public void CustomerIDPropertyOK()
+        public void OrderFeedbackPropertyOK()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //create some test data to assign to the property
             string TestData = "1001";
             //assign the data to the property
-            AnOrder.CustomerID = TestData;
+            AnOrder.OrderFeedback = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.CustomerID, TestData);
+            Assert.AreEqual(AnOrder.OrderFeedback, TestData);
         }
 
         [TestMethod]
@@ -155,7 +155,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestTicketIDFound()
+        public void TestPromoCodeFound()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -168,7 +168,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the ticket id property
-            if (AnOrder.TicketID != "101")
+            if (AnOrder.PromoCode != "101")
             {
                 OK = false;
             }
@@ -177,7 +177,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerIDFound()
+        public void TestOrderFeedbackFound()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -190,7 +190,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the customer id property
-            if (AnOrder.CustomerID != "1001")
+            if (AnOrder.OrderFeedback != "Feedback 1001")
             {
                 OK = false;
             }
@@ -294,129 +294,129 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         /******************TICKET ID VALIDATION TESTS******************/
         [TestMethod]
-        public void TicketIDMinLessOne()
+        public void PromoCodeMinLessOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = ""; //this should trigger an error
+            string PromoCode = ""; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMin()
+        public void PromoCodeMin()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "a"; //this should be ok
+            string PromoCode = "a"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMinPlusOne()
+        public void PromoCodeMinPlusOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "aa"; //this should be ok
+            string PromoCode = "aa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMaxLessOne()
+        public void PromoCodeMaxLessOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "aaaaa"; //this should be ok
+            string PromoCode = "aaaaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMax()
+        public void PromoCodeMax()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "aaaaaa"; //this should be ok
+            string PromoCode = "aaaaaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMid()
+        public void PromoCodeMid()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "aaa"; //this should be ok
+            string PromoCode = "aaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDMaxPlusOne()
+        public void PromoCodeMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "aaaaaaa"; //this should fail
+            string PromoCode = "aaaaaaa"; //this should fail
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void TicketIDExtremeMax()
+        public void PromoCodeExtremeMax()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TicketID = "";
-            TicketID = TicketID.PadRight(500, 'a'); //this should fail
+            string PromoCode = "";
+            PromoCode = PromoCode.PadRight(500, 'a'); //this should fail
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -438,7 +438,7 @@ namespace Testing4
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToShortDateString();
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual("", Error); // Past dates should be valid
         }
@@ -459,7 +459,7 @@ namespace Testing4
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToShortDateString();
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual("", Error); // Extremely past dates should be invalid
         }
@@ -478,7 +478,7 @@ namespace Testing4
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -499,7 +499,7 @@ namespace Testing4
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -520,7 +520,7 @@ namespace Testing4
             //convert the data variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -535,129 +535,129 @@ namespace Testing4
             //set the OrderDate to a non-date value
             string OrderDate = "this is not a date!";
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         /******************CUSTOMER ID VALIDATION TESTS******************/
         [TestMethod]
-        public void CustomerIDMinLessOne()
+        public void OrderFeedbackMinLessOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = ""; //this should trigger an error
+            string OrderFeedback = ""; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMin()
+        public void OrderFeedbackMin()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "1"; //this should be ok
+            string OrderFeedback = "1"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMinPlusOne()
+        public void OrderFeedbackMinPlusOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "11"; //this should be ok
+            string OrderFeedback = "11"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMaxLessOne()
+        public void OrderFeedbackMaxLessOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "aaaaa"; //this should be ok
+            string OrderFeedback = "aaaaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMax()
+        public void OrderFeedbackMax()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "aaaaaa"; //this should be ok
+            string OrderFeedback = "aaaaaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMid()
+        public void OrderFeedbackMid()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "aaa"; //this should be ok
+            string OrderFeedback = "aaa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDMaxPlusOne()
+        public void OrderFeedbackMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "aaaaaaa"; //this should fail
+            string OrderFeedback = "aaaaaaa"; //this should fail
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void CustomerIDExtremeMax()
+        public void OrderFeedbackExtremeMax()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerID = "";
-            CustomerID = CustomerID.PadRight(500, 'a'); //this should fail
+            string OrderFeedback = "";
+            OrderFeedback = OrderFeedback.PadRight(500, 'a'); //this should fail
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -673,7 +673,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "-1"; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -688,7 +688,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "0"; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -703,7 +703,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "0.01"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -718,7 +718,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "0.02"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -733,7 +733,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "999999.98"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -748,7 +748,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "999999.99"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -763,7 +763,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "500000.00"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -778,7 +778,7 @@ namespace Testing4
             //create some test data to pass the method
             string TotalAmount = "1000000"; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -794,7 +794,7 @@ namespace Testing4
             string TotalAmount = "";
             TotalAmount = TotalAmount.PadRight(500, '1'); //this should fail
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -809,7 +809,7 @@ namespace Testing4
             //set the TotalAmount to a non-numeric value
             string TotalAmount = "this is not a number";
             //invoke the method
-            Error = AnOrder.Valid(TicketID, CustomerID, OrderDate, TotalAmount);
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }

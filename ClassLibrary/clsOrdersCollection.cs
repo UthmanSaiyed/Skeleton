@@ -74,8 +74,8 @@ namespace ClassLibrary
                 clsOrders AnOrder = new clsOrders();
                 // Read in the fields for the current record
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrder.TicketID = Convert.ToString(DB.DataTable.Rows[Index]["TicketID"]);
-                AnOrder.CustomerID = Convert.ToString(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.PromoCode = Convert.ToString(DB.DataTable.Rows[Index]["PromoCode"]);
+                AnOrder.OrderFeedback = Convert.ToString(DB.DataTable.Rows[Index]["OrderFeedback"]);
                 AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
@@ -93,8 +93,8 @@ namespace ClassLibrary
             // Connect to the database
             clsDataConnection DB = new clsDataConnection();
             // Set the parameters for the stored procedure
-            DB.AddParameter("@TicketID", mThisOrder.TicketID);
-            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@PromoCode", mThisOrder.PromoCode);
+            DB.AddParameter("@OrderFeedback", mThisOrder.OrderFeedback);
             DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
             DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
             DB.AddParameter("@IsPaid", mThisOrder.IsPaid);
@@ -110,8 +110,8 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
             DB.AddParameter("@OrderID", mThisOrder.OrderID);
-            DB.AddParameter("@TicketID", mThisOrder.TicketID);
-            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@PromoCode", mThisOrder.PromoCode);
+            DB.AddParameter("@OrderFeedback", mThisOrder.OrderFeedback);
             DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
             DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
             DB.AddParameter("@IsPaid", mThisOrder.IsPaid);

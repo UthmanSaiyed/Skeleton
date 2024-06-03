@@ -16,13 +16,13 @@
             <asp:TextBox ID="txtOrderID" runat="server" style="z-index: 1; left: 238px; top: 52px; position: absolute"></asp:TextBox>
         </p>
         <p>
-            <asp:Label ID="lblTicketID" runat="server" style="z-index: 1; left: 34px; top: 121px; position: absolute" Text="Ticket ID" width="175px"></asp:Label>
-            <asp:TextBox ID="txtTicketID" runat="server" style="z-index: 1; left: 238px; top: 120px; position: absolute" width="248px" height="38px"></asp:TextBox>
+            <asp:Label ID="lblPromoCode" runat="server" style="z-index: 1; left: 34px; top: 121px; position: absolute" Text="Promo Code" width="175px"></asp:Label>
+            <asp:TextBox ID="txtPromoCode" runat="server" style="z-index: 1; left: 238px; top: 120px; position: absolute" width="248px" height="38px"></asp:TextBox>
         </p>
         <p>
-            <asp:Label ID="lblCustomerID" runat="server" style="z-index: 1; left: 34px; top: 181px; position: absolute" Text="Customer ID" width="175px"></asp:Label>
+            <asp:Label ID="lblOrderFeedback" runat="server" style="z-index: 1; left: 34px; top: 181px; position: absolute" Text="OrderFeedback" width="175px"></asp:Label>
         </p>
-        <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 238px; top: 182px; position: absolute" width="248px" height="38px"></asp:TextBox>
+        <asp:TextBox ID="txtOrderFeedback" runat="server" style="z-index: 1; left: 238px; top: 182px; position: absolute" width="248px" height="38px"></asp:TextBox>
         <p>
             <asp:Label ID="lblOrderStatus" runat="server" style="z-index: 1; left: 34px; top: 241px; position: absolute" Text="Order Status" width="175px"></asp:Label>
         </p>
