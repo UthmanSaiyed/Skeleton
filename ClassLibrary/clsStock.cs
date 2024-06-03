@@ -25,19 +25,19 @@ namespace ClassLibrary
         }
 
         //private data member for the TicketID property
-        private Int32 mEventId;
+        private string mSKU;
         //TicketID public property
-        public int EventId
+        public string SKU
         {
             get
             {
                 //this line of code sends data out of the property
-                return mEventId;
+                return mSKU;
             }
             set
             {
                 //this line of code allows data into the property
-                mEventId = value;
+                mSKU = value;
             }
         }
 
@@ -140,7 +140,7 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mTicketId = Convert.ToInt32(DB.DataTable.Rows[0]["TicketId"]);
-                mEventId = Convert.ToInt32(DB.DataTable.Rows[0]["EventId"]);
+                mSKU = Convert.ToString(DB.DataTable.Rows[0]["SKU"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 mSupplier = Convert.ToString(DB.DataTable.Rows[0]["Supplier"]);
@@ -158,20 +158,20 @@ namespace ClassLibrary
             
         }
 
-        public string Valid(string eventId, string quantity, string price, string supplier, string ticketName)
+        public string Valid(string SKU, string quantity, string price, string supplier, string ticketName)
         {
             //create a string variable to store the error
             String Error = "";
             //if the eventid is blank
-            if (eventId.Length == 0)
+            if (SKU.Length == 0)
             {
                 //record the error
-                Error = Error + "The eventid may be blank: ";
+                Error = Error + "The SKU may be blank: ";
             }
-            if (eventId.Length > 6)
+            if (SKU.Length > 6)
             {
                 //record the error
-                Error = Error + "The eventid must be less than 6 characters: ";
+                Error = Error + "The SKU must be less than 6 characters: ";
             }
             if (quantity.Length == 0)
             {

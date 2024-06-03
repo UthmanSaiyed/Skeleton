@@ -30,7 +30,7 @@ namespace Testing6
             //set its properties
             TestItem.InStock = true;
             TestItem.TicketId = 4;
-            TestItem.EventId = 97;
+            TestItem.SKU = "97";
             TestItem.Quantity = 1000;
             TestItem.Price = 149.99M;
             TestItem.Supplier = "Rolling Loud";
@@ -52,7 +52,7 @@ namespace Testing6
             //set the properties of the test object
             TestStock.InStock = true;
             TestStock.TicketId = 4;
-            TestStock.EventId = 97;
+            TestStock.SKU = "97";
             TestStock.Quantity = 1000;
             TestStock.Price = 149.99M;
             TestStock.Supplier = "Rolling Loud";
@@ -76,7 +76,7 @@ namespace Testing6
             //set its properties
             TestItem.InStock = true;
             TestItem.TicketId = 4;
-            TestItem.EventId = 97;
+            TestItem.SKU = "97";
             TestItem.Quantity = 100;
             TestItem.Price = 149.99M;
             TestItem.Supplier = "Rolling Loud";
@@ -100,7 +100,7 @@ namespace Testing6
             //set its properties
             TestItem.InStock = true;
             TestItem.TicketId = 7;
-            TestItem.EventId = 1001;
+            TestItem.SKU = "1001";
             TestItem.Quantity = 10031;
             TestItem.Price = 3499.99M;
             TestItem.Supplier = "Quebec";
@@ -127,7 +127,7 @@ namespace Testing6
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.InStock = true;
-            TestItem.EventId = 1001;
+            TestItem.SKU = "1001";
             TestItem.Quantity = 1001;
             TestItem.Price = 3499.99M;
             TestItem.Supplier = "Quebec";
@@ -140,7 +140,7 @@ namespace Testing6
             TestItem.TicketId = PrimaryKey;
             //modify the test record
             TestItem.InStock = false;
-            TestItem.EventId = 399;
+            TestItem.SKU = "399";
             TestItem.Quantity = 100;
             TestItem.Price = 4999.99M;
             TestItem.Supplier = "UEFA";
@@ -166,7 +166,7 @@ namespace Testing6
             //set its properties
             TestItem.InStock = true;
             TestItem.TicketId = 1036;
-            TestItem.EventId = 1001;
+            TestItem.SKU = "1001";
             TestItem.Quantity = 1001;
             TestItem.Price = 3499.99M;
             TestItem.Supplier = "Quebec";

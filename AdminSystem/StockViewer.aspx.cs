@@ -16,7 +16,7 @@ public partial class _1Viewer : System.Web.UI.Page
             clsStock AStock = (clsStock)Session["AStock"];
 
             Response.Write("Ticket ID: " + AStock.TicketId + "<br/>");
-            Response.Write("Event ID: " + AStock.EventId + "<br/>");
+            Response.Write("SKU: " + AStock.SKU + "<br/>");
             Response.Write("Quantity: " + AStock.Quantity + "<br/>");
             Response.Write("Price: " + AStock.Price + "<br/>");
             Response.Write("Supplier: " + AStock.Supplier + "<br/>");

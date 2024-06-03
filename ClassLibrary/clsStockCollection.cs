@@ -62,7 +62,7 @@ namespace ClassLibrary
             //set the primary key value of the new record
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@EventId", mThisStock.EventId);
+            DB.AddParameter("@SKU", mThisStock.SKU);
             DB.AddParameter("@Quantity", mThisStock.Quantity);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@Supplier", mThisStock.Supplier);
@@ -79,7 +79,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //set the paramters for the new stored procedure
             DB.AddParameter("TicketId", mThisStock.TicketId);
-            DB.AddParameter("EventId", mThisStock.EventId);
+            DB.AddParameter("SKU", mThisStock.SKU);
             DB.AddParameter("Quantity", mThisStock.Quantity);
             DB.AddParameter("Price", mThisStock.Price);
             DB.AddParameter("Supplier", mThisStock.Supplier);
@@ -129,7 +129,7 @@ namespace ClassLibrary
                 //read in the fields from the current record
                 AStock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
                 AStock.TicketId = Convert.ToInt32(DB.DataTable.Rows[Index]["TicketId"]);
-                AStock.EventId = Convert.ToInt32(DB.DataTable.Rows[Index]["EventId"]);
+                AStock.SKU = Convert.ToString(DB.DataTable.Rows[Index]["SKU"]);
                 AStock.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
                 AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
                 AStock.Supplier = Convert.ToString(DB.DataTable.Rows[Index]["Supplier"]);
