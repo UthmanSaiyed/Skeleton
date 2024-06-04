@@ -39,12 +39,12 @@
             <asp:CheckBox ID="chkActive" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" style="z-index: 1; left: 137px; top: 296px; position: absolute" Text="Active" />
         </p>
         <p>
-            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 98px; position: absolute; top: 347px" Text="OK" width="60px" />
+            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 98px; position: absolute; top: 361px" Text="OK" width="60px" />
         </p>
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 197px; top: 347px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 197px; top: 361px; position: absolute" Text="Cancel" />
         </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 324px; position: absolute"></asp:Label>
     </form>
