@@ -27,34 +27,66 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // create a new instance of clsEvent
         clsEvents AnEvent = new clsEvents();
 
-        //capture the event ID
-        AnEvent.EventID = Convert.ToInt32(txtEventsID.Text);
 
-        //capture the event title
-        AnEvent.Title = txtTitle.Text;
-        
+        //capture the title
+        string Title = txtTitle.Text;
+
         //capture the event location
-        AnEvent.Location = txtLocation.Text;
+        string Location = txtLocation.Text;
 
         //capture the event date
-        AnEvent.DateAdded = Convert.ToDateTime(txtDate.Text);
+        string DateAdded = Convert.ToString(txtDate.Text);
 
         //capture the event time
-        AnEvent.Time = Convert.ToString(txtTime.Text);
+        string Time = Convert.ToString(txtTime.Text);
 
         //capture the event description
-        AnEvent.Description = txtDescription.Text;
+        string Description = txtDescription.Text;
 
         //capture the event active check box
         AnEvent.Active = chkActive.Checked;
 
-        //store the address in the session object
-        Session["AnEvent"] = AnEvent;
+        //variable to store error message
+        string Error = "";
 
-        //navigate to the view page
-        Response.Redirect("EventsViewer.aspx");
+        //validate the data
+        Error = AnEvent.Valid(Title, Location, DateAdded, Time, Description);
+        if (Error == "")
+        {
+
+            //capture the event ID
+            AnEvent.EventID = Convert.ToInt32(txtEventsID.Text);
+
+            //capture the event title
+            AnEvent.Title = txtTitle.Text;
+
+            //capture the event location
+            AnEvent.Location = txtLocation.Text;
+
+            //capture the event date
+            AnEvent.DateAdded = Convert.ToDateTime(txtDate.Text);
+
+            //capture the event time
+            AnEvent.Time = Convert.ToString(txtTime.Text);
+
+            //capture the event description
+            AnEvent.Description = txtDescription.Text;
+
+            //capture the event active check box
+            AnEvent.Active = chkActive.Checked;
+
+            //store the address in the session object
+            Session["AnEvent"] = AnEvent;
+
+            //navigate to the view page
+            Response.Redirect("EventsViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsEvents AnEvent = new clsEvents();

@@ -99,7 +99,7 @@ namespace ClassLibrary
             // If the title character length is less than the min value or exceeds the max value
             if (Title.Length < 1 || Title.Length > 50)
             {
-                Error = Error + "The Title must be between 1 and 50 characters";
+                Error = Error + "The Title must be between 1 and 50 characters : ";
             }
 
             // Check for invalid characters in the Title
@@ -108,7 +108,7 @@ namespace ClassLibrary
             {
                 if (Title.Contains(invalidChar))
                 {
-                    Error = Error + "The Title contains invalid characters. ";
+                    Error = Error + "The Title contains invalid characters : ";
                     break;
                 }
             }
@@ -124,7 +124,7 @@ namespace ClassLibrary
 
             if (Location.Length  < 1 || Location.Length > 100)
             {
-                Error = Error + "The location field must be between 1 and 50 characters";
+                Error = Error + "The location field must be between 1 and 50 characters : ";
             }
 
             // Check for invalid characters in the Title
@@ -133,7 +133,7 @@ namespace ClassLibrary
             {
                 if (Location.Contains(invalidChar))
                 {
-                    Error = Error + "The Location contains invalid characters. ";
+                    Error = Error + "The Location contains invalid characters : ";
                     break;
                 }
             }
@@ -146,14 +146,14 @@ namespace ClassLibrary
                 //check to see if the date is less than today's date
                 if (DateTemp < DateTime.Now.Date)
                 {
-                    Error = Error + "the date cannot be in the past: ";
+                    Error = Error + "the date cannot be in the past : ";
                 }
 
             }
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date";
+                Error = Error + "The date was not a valid date : ";
             }
 
             // Location validation
@@ -179,13 +179,13 @@ namespace ClassLibrary
             catch
             {
                 //record the error
-                Error = Error + "hi";
+                Error = Error + "the time format is not valid : ";
             }
 
             // If the Description character length is less than the min value or exceeds the max value
             if (Description.Length < 1 || Description.Length > 1000)
             {
-                Error = Error + "The Description must be between 1 and 50 characters";
+                Error = Error + "The Description must be between 1 and 50 characters : ";
             }
 
             //return any error messages
