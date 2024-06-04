@@ -3,7 +3,7 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        public clsStaff()
+        public bool Active {  get; set; }
         {
         }
     }
