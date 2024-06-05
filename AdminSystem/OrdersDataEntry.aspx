@@ -37,9 +37,11 @@
         <asp:TextBox ID="txtTotalAmount" runat="server" style="z-index: 1; left: 238px; top: 421px; position: absolute" width="248px" height="38px"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 35px; top: 470px; position: absolute; color: black;"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 28px; top: 510px; position: absolute" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 114px; top: 510px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 114px; top: 510px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
+        <p>
+            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 568px; top: 507px; position: absolute; width: 304px" Text="Return to Main Menu" />
+        </p>
         <p>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 582px; top: 151px; position: absolute" Text="Find" />
         </p>

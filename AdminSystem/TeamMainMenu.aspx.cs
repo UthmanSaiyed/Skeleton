@@ -17,4 +17,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect the user to the stocklist page
         Response.Redirect("StockList.aspx");
     }
+
+    protected void btnOrders_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the OrdersList page
+        Response.Redirect("OrdersList.aspx");
+    }
 }
