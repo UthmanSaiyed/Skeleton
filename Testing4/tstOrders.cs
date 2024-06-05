@@ -398,8 +398,8 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string PromoCode = "aaaaaaa"; //this should fail
-            //invoke the method
+            string PromoCode = new string('a', 21); //this should fail
+                                                    //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
@@ -639,8 +639,8 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string OrderFeedback = "aaaaaaa"; //this should fail
-            //invoke the method
+            string OrderFeedback = new string('a', 251); //this should fail
+                                                         //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
