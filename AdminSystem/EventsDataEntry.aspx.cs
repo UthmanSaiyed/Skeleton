@@ -75,11 +75,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the event active check box
             AnEvent.Active = chkActive.Checked;
 
-            //store the address in the session object
-            Session["AnEvent"] = AnEvent;
+            //create a new instance
+            clsEventsCollection EventsList = new clsEventsCollection();
+
+            //set the ThisEvent property
+            EventsList.ThisEvent = AnEvent;
+
+            //add the new record
+            EventsList.Add();
 
             //navigate to the view page
-            Response.Redirect("EventsViewer.aspx");
+            Response.Redirect("EventsList.aspx");
         }
         else
         {
