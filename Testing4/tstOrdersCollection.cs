@@ -18,7 +18,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrdersListOK() 
+        public void OrdersListOK()
         {
             //create an instance of the class we want to create
             clsOrdersCollection AllOrders = new clsOrdersCollection();
@@ -191,6 +191,61 @@ namespace Testing4
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByPromoCodeMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrdersCollection AllOrders = new clsOrdersCollection();
+            //create an instance of the filtered data
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            //apply a blank string (should return all records);
+            FilteredOrders.ReportByPromoCode("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPromoCodeNoneFound()
+        {
+            //create an instance of the filtered data
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            //apply a promo code that doesn't exist
+            FilteredOrders.ReportByPromoCode("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPromoCodeTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a promo code that exists
+            FilteredOrders.ReportByPromoCode("yyy yyy");
+            //check that the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //check to see that the first record is ID 2119
+                if (FilteredOrders.OrdersList[0].OrderID != 2119)
+                {
+                    OK = false;
+                }
+                //check to see that the second record is ID 2120
+                if (FilteredOrders.OrdersList[1].OrderID != 2120)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
