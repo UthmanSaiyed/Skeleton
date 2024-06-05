@@ -4,29 +4,34 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class _1_List : System.Web.UI.Page
+public partial class _1_Search : System.Web.UI.Page
 {
     private StaffManager staffManager;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         staffManager = new StaffManager();
-        if (!IsPostBack)
-        {
-            LoadStaff();
-        }
     }
 
-    private void LoadStaff()
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
-        gvStaff.DataSource = staffManager.GetAllStaff();
+        string staffName = txtSearchName.Text.Trim();
+        string departmentName = txtSearchDepartment.Text.Trim();
+        bool? employmentStatus = null;
+
+        if (!string.IsNullOrEmpty(ddlSearchEmploymentStatus.SelectedValue))
+        {
+            employmentStatus = Convert.ToBoolean(ddlSearchEmploymentStatus.SelectedValue);
+        }
+
+        gvStaff.DataSource = staffManager.FilterStaff(staffName, departmentName, employmentStatus);
         gvStaff.DataBind();
     }
 
     protected void gvStaff_RowEditing(object sender, GridViewEditEventArgs e)
     {
         gvStaff.EditIndex = e.NewEditIndex;
-        LoadStaff();
+        btnSearch_Click(sender, e); // Rebind the data to refresh the GridView
     }
 
     protected void gvStaff_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -34,7 +39,6 @@ public partial class _1_List : System.Web.UI.Page
         GridViewRow row = gvStaff.Rows[e.RowIndex];
         int staffId = Convert.ToInt32(gvStaff.DataKeys[e.RowIndex].Value);
 
-        // Find controls and handle potential nulls
         TextBox txtStaffName = row.Cells[1].Controls[0] as TextBox;
         TextBox txtAddress = row.Cells[2].Controls[0] as TextBox;
         TextBox txtDepartmentName = row.Cells[3].Controls[0] as TextBox;
@@ -44,7 +48,6 @@ public partial class _1_List : System.Web.UI.Page
 
         if (txtStaffName == null || txtAddress == null || txtDepartmentName == null || ddlEmploymentStatus == null || txtSalary == null || txtDateOfEmployment == null)
         {
-            // Handle the case where any of the controls is null
             return;
         }
 
@@ -73,25 +76,20 @@ public partial class _1_List : System.Web.UI.Page
 
         staffManager.UpdateStaff(staff);
         gvStaff.EditIndex = -1;
-        LoadStaff();
+        btnSearch_Click(sender, e); // Rebind the data to refresh the GridView
     }
 
     protected void gvStaff_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         gvStaff.EditIndex = -1;
-        LoadStaff();
+        btnSearch_Click(sender, e); // Rebind the data to refresh the GridView
     }
 
     protected void gvStaff_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int staffId = Convert.ToInt32(gvStaff.DataKeys[e.RowIndex].Value);
         staffManager.DeleteStaff(staffId);
-        LoadStaff();
-    }
-
-    protected void btnAddStaff_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("StaffAdd.aspx");
+        btnSearch_Click(sender, e); // Rebind the data to refresh the GridView
     }
 
     protected void btnBack_Click(object sender, EventArgs e)

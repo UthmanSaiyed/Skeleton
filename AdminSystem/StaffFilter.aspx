@@ -1,12 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffList.aspx.cs" Inherits="_1_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffFilter.aspx.cs" Inherits="_1_Search" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Staff List</title>
+    <title>Search Staff</title>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="lblSearch" runat="server" Text="Search Staff"></asp:Label>
+            <asp:TextBox ID="txtSearchName" runat="server" Placeholder="Staff Name"></asp:TextBox>
+            <asp:TextBox ID="txtSearchDepartment" runat="server" Placeholder="Department Name"></asp:TextBox>
+            <asp:DropDownList ID="ddlSearchEmploymentStatus" runat="server">
+                <asp:ListItem Text="All" Value=""></asp:ListItem>
+                <asp:ListItem Text="Employed" Value="True"></asp:ListItem>
+                <asp:ListItem Text="Unemployed" Value="False"></asp:ListItem>
+            </asp:DropDownList>
+            <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+        </div>
         <div>
             <asp:GridView ID="gvStaff" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="StaffID"
@@ -35,7 +46,6 @@
                     <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
                 </Columns>
             </asp:GridView>
-            <asp:Button ID="btnAddStaff" runat="server" Text="Add Staff" OnClick="btnAddStaff_Click" />
             <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
         </div>
     </form>

@@ -29,8 +29,14 @@ public class clsDataConnection
     public clsDataConnection()
     {
         connectionString = GetConnectionString();
-    }
+        /*connectionString = "Server=localhost,1433;Database=master;User Id=sa;Password=42714271Ma;";
+        connectionToDB = new SqlConnection(connectionString);*/
 
+    }
+    public void ClearParameters()
+    {
+        SQLParams.Clear();
+    }
     private string GetConnectionString()
     {
         System.Net.WebClient client = new System.Net.WebClient();
