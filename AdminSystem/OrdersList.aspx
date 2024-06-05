@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrdersList.aspx.cs" Inherits="_1_List" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -18,13 +17,14 @@
         </p>
         <p>
             <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 20px; top: 1096px; position: absolute" Text="Enter a Promo Code"></asp:Label>
-            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 312px; top: 1094px; position: absolute; bottom: 262px;"></asp:TextBox>
-            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 30px; top: 1214px; position: absolute" Text="Apply Filter" />
+            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 312px; top: 1098px; position: absolute; bottom: 258px;"></asp:TextBox>
+            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 30px; top: 1182px; position: absolute" Text="Apply Filter" />
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 278px; top: 1180px; position: absolute" Text="Clear Filter" />
         </p>
         <p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 35px; top: 1288px; position: absolute; color: black;"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 39px; top: 1276px; position: absolute; color: black;"></asp:Label>
         </p>
-            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 304px; top: 1210px; position: absolute; text-decoration: underline;" Text="Clear Filter" />
+            <asp:Button ID="btnStatisticsPage" runat="server" OnClick="btnStatisticsPage_Click" style="z-index: 1; left: 528px; top: 1175px; position: absolute" Text="Statistics Page" />
     </form>
 </body>
 </html>
