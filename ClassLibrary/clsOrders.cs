@@ -169,10 +169,10 @@ namespace ClassLibrary
                 Error = Error + "The Promo Code may be blank : ";
             }
             //if the TicketID is greater than 6 characters
-            if (promoCode.Length > 6)
+            if (promoCode.Length > 20)
             {
                 //record the error 
-                Error = Error + "The Promo Code must be less than 6 characters : ";
+                Error = Error + "The Promo Code must be less than 20 characters : ";
             }
 
             //if the CustomerID is blank
@@ -181,11 +181,11 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Order Feedback may be blank : ";
             }
-            //if the CustomerID is greater than 6 characters
-            if (orderFeedback.Length > 6)
+            //if the OrderFeedback is greater than 250 characters
+            if (orderFeedback.Length > 250)
             {
                 //record the error 
-                Error = Error + "The Order Feedback must be less than 6 characters : ";
+                Error = Error + "The Order Feedback must be less than 250 characters : ";
             }
 
             //validate the OrderDate

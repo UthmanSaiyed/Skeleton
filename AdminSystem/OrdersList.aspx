@@ -16,7 +16,15 @@
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 110px; top: 1001px; position: absolute; width: 87px" Text="Edit" />
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 219px; top: 1001px; position: absolute" Text="Delete" />
         </p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 23px; top: 1074px; position: absolute; color: black;"></asp:Label>
+        <p>
+            <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 20px; top: 1096px; position: absolute" Text="Enter a Promo Code"></asp:Label>
+            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 312px; top: 1094px; position: absolute; bottom: 262px;"></asp:TextBox>
+            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 30px; top: 1214px; position: absolute" Text="Apply Filter" />
+        </p>
+        <p>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 35px; top: 1288px; position: absolute; color: black;"></asp:Label>
+        </p>
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 304px; top: 1210px; position: absolute; text-decoration: underline;" Text="Clear Filter" />
     </form>
 </body>
 </html>
