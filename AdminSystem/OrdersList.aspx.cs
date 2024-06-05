@@ -115,5 +115,11 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstOrdersList.DataBind();
     }
+
+    protected void btnStatisticsPage_Click(object sender, EventArgs e)
+    {
+        // Redirect to the statistics page
+        Response.Redirect("OrdersStatistics.aspx");
+    }
 }
 

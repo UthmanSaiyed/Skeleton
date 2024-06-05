@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -230,6 +232,28 @@ namespace ClassLibrary
 
             //return any error messages
             return Error;
+        }
+
+        /****** Statistics Grouped by order status METHOD ******/
+        public DataTable StatisticsGroupedByOrderStatus()
+        {
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Execute the stored procedure
+            DB.Execute("sproc_tblOrder_Count_GroupByOrderStatus");
+            // There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by order date METHOD ******/
+        public DataTable StatisticsGroupedByOrderDate()
+        {
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Execute the stored procedure
+            DB.Execute("sproc_tblOrder_Count_GroupByOrderDate");
+            // There should be either zero, one, or more records
+            return DB.DataTable;
         }
     }
 }

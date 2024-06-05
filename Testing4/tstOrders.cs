@@ -1,6 +1,10 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics;
+using System.Data;
+
+
 
 namespace Testing4
 {
@@ -812,6 +816,32 @@ namespace Testing4
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByOrderStatus()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // Invoke the method
+            DataTable dt = AnOrder.StatisticsGroupedByOrderStatus();
+            // According to the last executed stored procedure, there should be a specific number of rows of data
+            int noOfRecord = 2; 
+            // Test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dt.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByOrderDate()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // Invoke the method
+            DataTable dt = AnOrder.StatisticsGroupedByOrderDate();
+            // According to the last executed stored procedure, there should be a specific number of rows of data
+            int noOfRecord = 10; 
+            // Test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dt.Rows.Count);
         }
     }
 }
