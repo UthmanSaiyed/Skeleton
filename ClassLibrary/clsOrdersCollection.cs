@@ -130,5 +130,46 @@ namespace ClassLibrary
             // execute the stored procedure
             DB.Execute("sproc_tblOrder_Delete");
         }
+
+        public void ReportByPromoCode(string PromoCode)
+        {
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the PromoCode parameter to the database
+            DB.AddParameter("@PromoCode", PromoCode);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByPromoCode");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populate the array list based on the data table in the parameter DB
+            //variable for the index
+            int Index = 0;
+            //variable to store the record count
+            int RecordCount = DB.Count;
+            //clear the private array list
+            mOrdersList = new List<clsOrders>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank order
+                clsOrders AnOrder = new clsOrders();
+                //read in the fields from the current record
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.PromoCode = Convert.ToString(DB.DataTable.Rows[Index]["PromoCode"]);
+                AnOrder.OrderFeedback = Convert.ToString(DB.DataTable.Rows[Index]["OrderFeedback"]);
+                AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
+                AnOrder.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
+                //add the record to the private data member
+                mOrdersList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
+        }
     }
 }
