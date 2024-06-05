@@ -98,6 +98,33 @@ namespace Testing3
 
             Assert.AreEqual(AllEvents.EventList.Count, TestList.Count);
         }
+/*        [TestMethod]
+        public void  AddMethodOK()
+        {
+            clsEventsCollection AllEvents = new clsEventsCollection();
+            clsEvents TestItem = new clsEvents();
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestItem.EventID = 1;
+            TestItem.Title = "Macharia's Event";
+            TestItem.Location = "24 Fake Street";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Time = "23:00";
+            TestItem.Description = "Macharia's awesome event. bring juice.";
+            TestItem.Active = true;
+            //set this event to the test data
+            AllEvents.ThisEvent = TestItem;
+            //add the record
+            PrimaryKey = AllEvents.Add();
+            //set the primary key of the test data
+            TestItem.EventID = PrimaryKey;
+            //find the record
+            AllEvents.ThisEvent.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllEvents.ThisEvent, TestItem);
+
+        }
+*/
 
     }
 }

@@ -32,7 +32,7 @@ namespace ClassLibrary
         }
 
 
-        public clsEvents ThisEvent 
+        public clsEvents ThisEvent
         {
             get
             {
@@ -40,7 +40,7 @@ namespace ClassLibrary
             }
 
             set
-            { 
+            {
                 mThisEvent = value;
             }
         }
@@ -78,10 +78,25 @@ namespace ClassLibrary
                 mEventList.Add(AnEvent);
 
                 Index++;
-             
+
             }
 
         }
 
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the stored procedures
+            DB.AddParameter("@Title", mThisEvent.Title);
+            DB.AddParameter("@Location", mThisEvent.Location);
+            DB.AddParameter("@DateAdded", mThisEvent.DateAdded);
+            DB.AddParameter("@Time", mThisEvent.Time);
+            DB.AddParameter("@Description", mThisEvent.Description);
+            DB.AddParameter("@Active", mThisEvent.Active);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblEvents_Insert");
+        }
     }
 }
