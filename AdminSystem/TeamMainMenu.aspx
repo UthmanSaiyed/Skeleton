@@ -19,7 +19,7 @@
             <asp:Button ID="btnCustomers" runat="server" Text="Customers" />
         </p>
         <asp:Button ID="btnStock" runat="server" OnClick="btnStock_Click" Text="Stock" />
-        <asp:Button ID="btnOrders" runat="server" Text="Orders" />
+        <asp:Button ID="btnOrders" runat="server" Text="Orders" OnClick="btnOrders_Click" />
     </form>
 </body>
 </html>

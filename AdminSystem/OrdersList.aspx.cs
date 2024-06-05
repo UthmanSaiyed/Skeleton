@@ -121,5 +121,10 @@ public partial class _1_List : System.Web.UI.Page
         // Redirect to the statistics page
         Response.Redirect("OrdersStatistics.aspx");
     }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
 
