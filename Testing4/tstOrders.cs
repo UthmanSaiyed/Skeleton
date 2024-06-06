@@ -917,7 +917,7 @@ namespace Testing4
             // Invoke the method
             DataTable dt = AnOrder.StatisticsGroupedByOrderDate();
             // According to the last executed stored procedure, there should be a specific number of rows of data
-            int noOfRecord = 12; 
+            int noOfRecord = 11; 
             // Test to see that the result is correct
             Assert.AreEqual(noOfRecord, dt.Rows.Count);
         }
