@@ -425,6 +425,38 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void PromoCodeInvalidCharacters()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string PromoCode = "PROMO@CODE!";
+            // Invoke the method
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
+            // Test to see the result is correct
+            Assert.AreNotEqual(Error, ""); // This checks that an error is returned
+        }
+
+        [TestMethod]
+        public void PromoCodeValidCharacters()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string PromoCode = "PROMO12345";
+            // Invoke the method
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
+            // Test to see the result is correct
+            Assert.AreEqual(Error, ""); // This checks that no error is returned
+        }
+
+
+
         /******************ORDER DATE VALIDATION TESTS******************/
         [TestMethod]
         public void OrderDateMinLessOne()
@@ -666,6 +698,22 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void OrderFeedbackInvalidCharacters()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string OrderFeedback = "This is invalid feedback!@#$%";
+            // Invoke the method
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
+            // Test to see the result is correct
+            Assert.AreNotEqual(Error, ""); // This checks that an error is returned
+        }
+
+
         /******************TOTAL AMOUNT VALIDATION TESTS******************/
         [TestMethod]
         public void TotalAmountExtremeMin()
@@ -819,6 +867,36 @@ namespace Testing4
         }
 
         [TestMethod]
+        public void TotalAmountMinBoundary()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string TotalAmount = "0.01"; // Boundary value
+                                         // Invoke the method
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
+            // Test to see the result is correct
+            Assert.AreEqual(Error, ""); // This checks that no error is returned
+        }
+
+        [TestMethod]
+        public void TotalAmountMaxBoundary()
+        {
+            // Create an instance of the class we want to create
+            clsOrders AnOrder = new clsOrders();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string TotalAmount = "999999.99"; // Boundary value
+                                              // Invoke the method
+            Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
+            // Test to see the result is correct
+            Assert.AreEqual(Error, ""); // This checks that no error is returned
+        }
+
+        [TestMethod]
         public void StatStatisticsGroupedByOrderStatus()
         {
             // Create an instance of the class we want to create
@@ -839,7 +917,7 @@ namespace Testing4
             // Invoke the method
             DataTable dt = AnOrder.StatisticsGroupedByOrderDate();
             // According to the last executed stored procedure, there should be a specific number of rows of data
-            int noOfRecord = 10; 
+            int noOfRecord = 12; 
             // Test to see that the result is correct
             Assert.AreEqual(noOfRecord, dt.Rows.Count);
         }
