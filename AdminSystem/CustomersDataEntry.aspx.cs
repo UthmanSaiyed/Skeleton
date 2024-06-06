@@ -18,34 +18,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomers
         clsCustomers ACustomer = new clsCustomers();
 
-        //capture the CustomerID
-        ACustomer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-                 
-        //capture Name
-        ACustomer.Name = txtName.Text;
+        string CustomerID = txtCustomerID.Text;
+        string Name = txtName.Text;
+        string Email = txtEmail.Text;
+        string Date = txtDate.Text;
+        string Phonenumber = txtPhonenumber.Text;
+        string Newsletter = cbActive.Text;
+        string Active = cbActive.Text;
+        string Error = "";
+        Error = ACustomer.Valid(Name, Email, Date, Phonenumber);
+        if (Error == "")
+        {
+            ACustomer.Name = Name;
+            ACustomer.Email = Email;
+            ACustomer.Date = Convert.ToDateTime(Date);
+            ACustomer.Phonenumber = Phonenumber;
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomersViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
-     
-
-        //capture email
-        ACustomer.Email = txtEmail.Text;
-
-        //capture date
-        ACustomer.Date = Convert.ToDateTime(txtDate.Text);
-
-        //capture phonenumber
-        ACustomer.Phonenumber = txtPhonenumber.Text;
-
-        //capture newsletter
-        ACustomer.Newsletter = cbActive.Checked;
-
-        //capture active
-        ACustomer.Active = cbActive.Checked;
-
-        //store the customer in the session object
-        Session["ACustomer"] = ACustomer;
-
-        //navigate to the view page
-        Response.Redirect("CustomersViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
