@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace ClassLibrary
 {
@@ -144,40 +145,58 @@ namespace ClassLibrary
 
         public string Valid(string name, string email, string date, string phonenumber)
         {
-            //create a string vqriable to store error
+
+            //create a string variable to store the error
             String Error = "";
-
-            DateTime Date;
-            //if th name is blank
-
+            //create a temprorary variable to store data values
+            DateTime DateTemp;
+            //if name is blank
             if (name.Length == 0)
             {
                 //record the error
                 Error = Error + "The name should not be blank: ";
             }
-            //return any error messages
-            
+            //if the name is greater than 35 chracters 
+            if (name.Length > 35)
+            {
+                //record the error
+                Error = Error + "The name should not be blank: ";
+            }
+            /**************EMAIL********************/
 
+            //if email is longer than 256 characters
             if (email.Length > 256)
             {
                 //record the error
                 Error = Error + "The email should be less than 256 characters: ";
             }
 
+            //if the email is less than 2 characters
+            if (email.Length == 0)
+            {
+                //record error
+                Error = Error + "Email should be longer than 1 character: ";
+            }
+
+
+
             try
             {
-                //copy the OrderDate value to the DateTemp variable
-                Date = Convert.ToDateTime(date);
-                if (Date < DateTime.Now.Date.AddYears(-100))
+                //copy the date value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(date);
+
+                if (DateTemp < DateTime.Now.Date.AddYears(-100))//compare DateTemp with Date 
                 {
                     //record the error
                     Error = Error + "The date cannot be more than 100 years in the past : ";
                 }
-                if (Date > DateTime.Now.Date)
+                if (DateTemp > DateTime.Now.Date.AddYears(1))
                 {
                     //record the error
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The date cannot be less than 15 years : ";
                 }
+
+
             }
             catch
             {
@@ -185,25 +204,30 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
 
-            if (phonenumber.Length < 11) 
-            {
-                Error = Error + "Phone number must be 11 digits";
+            //if phone number less than 11 digits
 
-            }
-            if(phonenumber.Length > 11)
+            if (phonenumber.Length < 10)
             {
+                //record the error
                 Error = Error + "Phone number must be 11 digits";
             }
 
-            
-            
+            //if phone number greater than 11 digits
+            if (phonenumber.Length > 12)
+            {
+                //record the error
+                Error = Error + "Phone number must be 11 digits";
+            }
+
 
 
             //return any error messages
             //needs to be at end
             return Error;
         }
+
+
     }
-    
+
 }
 
