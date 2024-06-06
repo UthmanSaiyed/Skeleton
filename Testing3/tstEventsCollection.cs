@@ -165,5 +165,84 @@ namespace Testing3
             Assert.AreEqual(AllEvents.ThisEvent, TestItem);
 
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsEventsCollection AllEvents = new clsEventsCollection();
+            //create the item for the test data
+            clsEvents TestItem = new clsEvents();
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestItem.EventID = 1;
+            TestItem.Title = "Macharia's Event";
+            TestItem.Location = "24 Fake Street";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Time = "23:00";
+            TestItem.Description = "Macharia's awesome event. bring juice.";
+            TestItem.Active = true;
+            //set this event to the test data
+            AllEvents.ThisEvent = TestItem;
+            //add the record
+            PrimaryKey = AllEvents.Add();
+            //set the primary key of the test data
+            TestItem.EventID = PrimaryKey;
+            //find the record
+            AllEvents.ThisEvent.Find(PrimaryKey);
+            //delete the record
+            AllEvents.Delete();
+            //now find the record
+            bool Found = AllEvents.ThisEvent.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+
+        public void ReportByLocationOK()
+        {
+            clsEventsCollection AllEvents = new clsEventsCollection();
+            clsEventsCollection FilteredEvents = new clsEventsCollection();
+            FilteredEvents.ReportByLocation("");
+            Assert.AreEqual(AllEvents.Count, FilteredEvents.Count);
+        }
+
+        [TestMethod]
+        public void ReportByLocationNoneFound()
+        {
+            clsEventsCollection AllEvents = new clsEventsCollection();
+            clsEventsCollection FilteredEvents = new clsEventsCollection();
+            FilteredEvents.ReportByLocation("ABC");
+            Assert.AreEqual(0, FilteredEvents.Count);
+        }
+        [TestMethod]
+        public void ReportByLocationDataFound()
+        {
+            //create an instance of the filtered data
+            clsEventsCollection FilteredEvent = new clsEventsCollection();
+            //variable to store the collection
+            Boolean OK = true;
+            //apply a supplier that doesn't exist
+            FilteredEvent.ReportByLocation("yyy yyy");
+            //check that the correct number of records was found
+            if (FilteredEvent.Count == 2)
+            {
+                if (FilteredEvent.EventList[0].EventID != 18)
+                {
+                    OK = false;
+                }
+                if (FilteredEvent.EventList[1].EventID != 19)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
     }
 }

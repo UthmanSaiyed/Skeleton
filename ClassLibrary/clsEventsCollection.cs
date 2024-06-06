@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace ClassLibrary
 {
@@ -48,38 +49,9 @@ namespace ClassLibrary
         // Constructor to initialize the collection with test data
         public clsEventsCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-
-            //object for data connect
-            clsDataConnection DB = new clsDataConnection();
-
-            //execute the stored procedure
+     clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblEvents_SelectAll");
-
-            RecordCount = DB.Count;
-            // While there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsEvents AnEvent = new clsEvents();
-
-                //read in the fields from the current record
-                AnEvent.EventID = Convert.ToInt32(DB.DataTable.Rows[Index]["EventsID"]);
-                AnEvent.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
-                AnEvent.Time = Convert.ToString(DB.DataTable.Rows[Index]["Time"]);
-                AnEvent.Location = Convert.ToString(DB.DataTable.Rows[Index]["Location"]);
-                AnEvent.Title = Convert.ToString(DB.DataTable.Rows[Index]["Title"]);
-                AnEvent.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
-                AnEvent.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
-                //add the record to the private data member
-                mEventList.Add(AnEvent);
-
-                Index++;
-
-            }
+            PopulateArray(DB);
 
         }
 
@@ -115,6 +87,55 @@ namespace ClassLibrary
 
             //execute the query returning the primary key value
             DB.Execute("sproc_tblEvents_Update");
+        }
+
+        public void Delete()
+        {
+           //delete method
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for stored procedure
+            DB.AddParameter("@EventID", mThisEvent.EventID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblEvents_Delete");
+        }
+
+        public void ReportByLocation(string Location)
+        {
+          clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Location", Location);
+            DB.Execute("sproc_tblEvents_FilterByLocation");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount = 0;
+            RecordCount = DB.Count;
+            mEventList = new List<clsEvents>();
+            
+            // While there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsEvents AnEvent = new clsEvents();
+
+                //read in the fields from the current record
+                AnEvent.EventID = Convert.ToInt32(DB.DataTable.Rows[Index]["EventsID"]);
+                AnEvent.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
+                AnEvent.Time = Convert.ToString(DB.DataTable.Rows[Index]["Time"]);
+                AnEvent.Location = Convert.ToString(DB.DataTable.Rows[Index]["Location"]);
+                AnEvent.Title = Convert.ToString(DB.DataTable.Rows[Index]["Title"]);
+                AnEvent.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
+                AnEvent.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                //add the record to the private data member
+                mEventList.Add(AnEvent);
+
+                Index++;
+
+            }
         }
     }
     }
