@@ -44,7 +44,7 @@ namespace Testing3
         public void EventsListOk()
         {
             //create an instance of the class we want to create
-            clsEventsCollection AllEvents= new clsEventsCollection();
+            clsEventsCollection AllEvents = new clsEventsCollection();
 
             //create some test data (List Of Objects)
             List<clsEvents> TestList = new List<clsEvents>();
@@ -64,7 +64,7 @@ namespace Testing3
             TestList.Add(TestItem);
 
             //assign the data to the property
-           AllEvents.EventList = TestList;
+            AllEvents.EventList = TestList;
 
             Assert.AreEqual(AllEvents.EventList, TestList);
         }
@@ -98,10 +98,39 @@ namespace Testing3
 
             Assert.AreEqual(AllEvents.EventList.Count, TestList.Count);
         }
-/*        [TestMethod]
-        public void  AddMethodOK()
+        /*        [TestMethod]
+                public void  AddMethodOK()
+                {
+                    clsEventsCollection AllEvents = new clsEventsCollection();
+                    clsEvents TestItem = new clsEvents();
+                    Int32 PrimaryKey = 0;
+                    //set the properties
+                    TestItem.EventID = 1;
+                    TestItem.Title = "Macharia's Event";
+                    TestItem.Location = "24 Fake Street";
+                    TestItem.DateAdded = DateTime.Now;
+                    TestItem.Time = "23:00";
+                    TestItem.Description = "Macharia's awesome event. bring juice.";
+                    TestItem.Active = true;
+                    //set this event to the test data
+                    AllEvents.ThisEvent = TestItem;
+                    //add the record
+                    PrimaryKey = AllEvents.Add();
+                    //set the primary key of the test data
+                    TestItem.EventID = PrimaryKey;
+                    //find the record
+                    AllEvents.ThisEvent.Find(PrimaryKey);
+                    //test to see that the two values are the same
+                    Assert.AreEqual(AllEvents.ThisEvent, TestItem);
+
+                }
+        */
+
+        [TestMethod]
+        public void UpdateMethodOK()
         {
             clsEventsCollection AllEvents = new clsEventsCollection();
+            //create the item for the test data
             clsEvents TestItem = new clsEvents();
             Int32 PrimaryKey = 0;
             //set the properties
@@ -118,13 +147,23 @@ namespace Testing3
             PrimaryKey = AllEvents.Add();
             //set the primary key of the test data
             TestItem.EventID = PrimaryKey;
+
+            //replication of mofifying the test
+            TestItem.Title = "ChangedToParth";
+            TestItem.Location = "24 Real Street";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Time = "00:01";
+            TestItem.Description = "Parth's takeover event. bring protien shakes.";
+            TestItem.Active = false;
+            //set the record based on the newly manipulated data
+            AllEvents.ThisEvent = TestItem;
+            //update the record
+            AllEvents.Update();
             //find the record
             AllEvents.ThisEvent.Find(PrimaryKey);
             //test to see that the two values are the same
             Assert.AreEqual(AllEvents.ThisEvent, TestItem);
 
         }
-*/
-
     }
 }

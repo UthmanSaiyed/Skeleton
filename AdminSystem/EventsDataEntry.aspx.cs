@@ -6,10 +6,35 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 public partial class _1_DataEntry : System.Web.UI.Page
-{
+{ 
+    Int32 EventID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the Event to be processed
+        EventID = Convert.ToInt32(Session["EventID"]);
+        if (IsPostBack == false)
+        {
+            if (EventID != -1)
+            {
+                DisplayEvent();
+            }
+        }
+    }
+    void DisplayEvent()
+    {
+        //create an instance of the address book
+        clsEventsCollection Events = new clsEventsCollection();
 
+        //find the record to update
+        Events.ThisEvent.Find(EventID);
+
+        //display the data for the record
+        txtTitle.Text = Events.ThisEvent.EventID.ToString();
+        txtLocation.Text = Events.ThisEvent.Location.ToString();
+        txtDate.Text = Events.ThisEvent.DateAdded.ToString();
+        txtTime.Text = Events.ThisEvent.Time.ToString();
+        txtDescription.Text = Events.ThisEvent.Description.ToString();
+        chkActive.Checked = Events.ThisEvent.Active;
     }
 
     protected void txtDate_TextChanged(object sender, EventArgs e)
@@ -55,7 +80,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
 
             //capture the event ID
-            AnEvent.EventID = Convert.ToInt32(txtEventsID.Text);
+            AnEvent.EventID = EventID;
 
             //capture the event title
             AnEvent.Title = txtTitle.Text;
@@ -77,13 +102,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             //create a new instance
             clsEventsCollection EventsList = new clsEventsCollection();
+            if (EventID == -1)
+            {//set the ThisEvent property
+                EventsList.ThisEvent = AnEvent;
 
-            //set the ThisEvent property
-            EventsList.ThisEvent = AnEvent;
-
-            //add the new record
-            EventsList.Add();
-
+                //add the new record
+                EventsList.Add();
+            }
+            else
+            {
+                //find the record to update
+                EventsList.ThisEvent.Find(EventID);
+                //set the ThisEvent property
+                EventsList.ThisEvent = AnEvent;
+                //update the record
+                EventsList.Update();
+            }
             //navigate to the view page
             Response.Redirect("EventsList.aspx");
         }
