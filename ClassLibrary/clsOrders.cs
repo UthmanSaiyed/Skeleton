@@ -151,7 +151,7 @@ namespace ClassLibrary
             //if no record was found
             else
             {
-                //return false indicating there is a problem
+                //return false showing that theres an issue
                 return false;
             }
         }

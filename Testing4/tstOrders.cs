@@ -437,7 +437,7 @@ namespace Testing4
             // Invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             // Test to see the result is correct
-            Assert.AreNotEqual(Error, ""); // This checks that an error is returned
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -452,7 +452,7 @@ namespace Testing4
             // Invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             // Test to see the result is correct
-            Assert.AreEqual(Error, ""); // This checks that no error is returned
+            Assert.AreEqual(Error, "");
         }
 
 
@@ -476,7 +476,7 @@ namespace Testing4
             //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
-            Assert.AreEqual("", Error); // Past dates should be valid
+            Assert.AreEqual("", Error);
         }
 
         [TestMethod]
@@ -497,7 +497,7 @@ namespace Testing4
             //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
-            Assert.AreNotEqual("", Error); // Extremely past dates should be invalid
+            Assert.AreNotEqual("", Error);
         }
 
         [TestMethod]
@@ -676,7 +676,7 @@ namespace Testing4
             String Error = "";
             //create some test data to pass the method
             string OrderFeedback = new string('a', 251); //this should fail
-                                                         //invoke the method
+            //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
@@ -723,7 +723,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TotalAmount = "-1"; //this should trigger an error
+            string TotalAmount = "-1"; //this should cause an error
             //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
@@ -738,7 +738,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string TotalAmount = "0"; //this should trigger an error
+            string TotalAmount = "0"; //this should cause an error
             //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             //test to see if the result is correct
@@ -858,7 +858,7 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             //string variable to store any error message
             String Error = "";
-            //set the TotalAmount to a non-numeric value
+            //set TotalAmount for a not numeric value
             string TotalAmount = "this is not a number";
             //invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
@@ -874,11 +874,11 @@ namespace Testing4
             // String variable to store any error message
             string Error = "";
             // Create some test data to pass to the method
-            string TotalAmount = "0.01"; // Boundary value
-                                         // Invoke the method
+            string TotalAmount = "0.01";
+            // Invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             // Test to see the result is correct
-            Assert.AreEqual(Error, ""); // This checks that no error is returned
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -889,11 +889,11 @@ namespace Testing4
             // String variable to store any error message
             string Error = "";
             // Create some test data to pass to the method
-            string TotalAmount = "999999.99"; // Boundary value
-                                              // Invoke the method
+            string TotalAmount = "999999.99"; 
+            // Invoke the method
             Error = AnOrder.Valid(PromoCode, OrderFeedback, OrderDate, TotalAmount);
             // Test to see the result is correct
-            Assert.AreEqual(Error, ""); // This checks that no error is returned
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
