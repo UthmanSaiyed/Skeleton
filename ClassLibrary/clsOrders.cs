@@ -151,7 +151,7 @@ namespace ClassLibrary
             //if no record was found
             else
             {
-                //return false indicating there is a problem
+                //return false showing that theres an issue
                 return false;
             }
         }
@@ -164,20 +164,25 @@ namespace ClassLibrary
             //create a temporary variable to store the date values
             DateTime DateTemp;
 
-            //if the TicketID is blank
+            //if the PromoCode is blank
             if (promoCode.Length == 0)
             {
                 //record the error
                 Error = Error + "The Promo Code may be blank : ";
             }
-            //if the TicketID is greater than 6 characters
+            //if the PromoCode is greater than 20 characters
             if (promoCode.Length > 20)
             {
                 //record the error 
                 Error = Error + "The Promo Code must be less than 20 characters : ";
             }
+            //check for invalid characters in PromoCode
+            if (!System.Text.RegularExpressions.Regex.IsMatch(promoCode, @"^[a-zA-Z0-9]*$"))
+            {
+                Error = Error + "The Promo Code contains invalid characters : ";
+            }
 
-            //if the CustomerID is blank
+            //if the OrderFeedback is blank
             if (orderFeedback.Length == 0)
             {
                 //record the error
@@ -188,6 +193,11 @@ namespace ClassLibrary
             {
                 //record the error 
                 Error = Error + "The Order Feedback must be less than 250 characters : ";
+            }
+            //check for invalid characters in OrderFeedback
+            if (!System.Text.RegularExpressions.Regex.IsMatch(orderFeedback, @"^[a-zA-Z0-9\s.,]*$"))
+            {
+                Error = Error + "The Order Feedback contains invalid characters : ";
             }
 
             //validate the OrderDate
