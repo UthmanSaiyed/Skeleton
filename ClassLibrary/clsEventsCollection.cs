@@ -98,5 +98,23 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblEvents_Insert");
         }
+
+        public void Update()
+        {
+            //updates an exisitng record in the database
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the stored procedures
+            DB.AddParameter("@EventID", mThisEvent.EventID);
+            DB.AddParameter("@Title", mThisEvent.Title);
+            DB.AddParameter("@Location", mThisEvent.Location);
+            DB.AddParameter("@DateAdded", mThisEvent.DateAdded);
+            DB.AddParameter("@Time", mThisEvent.Time);
+            DB.AddParameter("@Description", mThisEvent.Description);
+            DB.AddParameter("@Active", mThisEvent.Active);
+
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblEvents_Update");
+        }
     }
-}
+    }
