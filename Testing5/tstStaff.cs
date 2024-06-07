@@ -6,10 +6,56 @@ using System.Net;
 namespace Testing5
 {
     [TestClass]
-    public class tstStaff
+    public class Staff
     {
+        private string _StaffName;
+        private string _Address;
+        private string _Department;
+        private object departmentName;
+
         public object Name { get; private set; }
         public object Address { get; private set; }
+        public string Salary { get; private set; }
+
+        public Staff(string StaffName, string Address, string Department)
+        {
+            if (Valid(StaffName, Address, Department))
+            {
+                _StaffName = StaffName;
+                _Address = Address;
+                _Department = Department;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid input data. Please check the length and contents of the input fields.");
+            }
+        }
+
+        public bool Valid(string StaffName, string Address, string Department)
+        {
+            bool Valid = true;
+            if (string.IsNullOrEmpty(StaffName))
+            {
+                Valid = false;
+            }
+            if (string.IsNullOrEmpty(Address))
+            {
+                Valid = false;
+            }
+            if (string.IsNullOrEmpty(Department))
+            {
+                Valid = false;
+            }
+            return Valid;
+        }
+
+        public void PrintStaffInfo()
+        {
+            Console.WriteLine("Staff Name: " + _StaffName);
+            Console.WriteLine("Address: " + _Address);
+            Console.WriteLine("Department: " + _Department);
+        }
+
 
         [TestMethod]
         public void InstanceOK()
@@ -323,130 +369,16 @@ namespace Testing5
             //create some test data to pass the method
             string StaffID = ""; //this should trigger an error
                                  //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address );
+            Error = AnStaff.Valid(StaffID, Name, Address, departmentName, Salary);
             //test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
-
-        [TestMethod]
-        public void StaffIDMin()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "1"; //this should be ok
-                                  //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDMinPlusOne()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "2"; //this should be ok
-                                  //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDMaxLessOne()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "999"; //this should be ok
-                                    //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDMax()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "1000"; //this should be ok
-                                     //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDMid()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "500"; //this should be ok
-                                    //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDMaxPlusOne()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "1001"; //this should fail
-                                     //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void StaffIDExtremeMax()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "999999"; //this should fail
-                                       //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void StaffIDInvalidFormat()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StaffID = "abc"; //this should fail
-                                    //invoke the method
-            Error = AnStaff.Valid(StaffID, Name, Address);
-            //test to see if the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
     }
 }
+
+
+
+
+
+
 

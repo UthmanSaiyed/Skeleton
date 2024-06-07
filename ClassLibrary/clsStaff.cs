@@ -24,7 +24,7 @@ namespace ClassLibrary
             throw new NotImplementedException();
         }
 
-        public string Valid(string staffID, object name, object address)
+        public string Valid(string staffID, object name, object address, object departmentName, string salary)
         {
             throw new NotImplementedException();
         }
