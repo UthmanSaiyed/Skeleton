@@ -15,7 +15,7 @@
             &nbsp;</p>
         <p>
             <asp:Button ID="btnEvents" runat="server" Text="Events" />
-            <asp:Button ID="btnStaff" runat="server" Text="Staff" />
+            <asp:Button ID="btnStaff" runat="server" Text="Staff" OnClick="btnStaff_Click" />
             <asp:Button ID="btnCustomers" runat="server" Text="Customers" />
         </p>
         <asp:Button ID="btnStock" runat="server" OnClick="btnStock_Click" Text="Stock" />
